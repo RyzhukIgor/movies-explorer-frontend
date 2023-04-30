@@ -22,6 +22,12 @@ function AboutProject() {
                     </p>
                 </div>
             </div>
+            <div className="about-project__chart">
+                    <h4 className="about-project__week">1 неделя</h4>
+                    <h4 className="about-project__week">4 недели</h4>
+                    <p className="about-project__week-info">Back-end</p>
+                    <p className="about-project__week-info">Front-end</p>
+                </div>
         </section>
     );
 }

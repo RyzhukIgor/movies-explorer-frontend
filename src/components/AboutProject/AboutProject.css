@@ -14,6 +14,7 @@
 
 .about-project {
     max-width: 1280px;
+    margin: 0px auto;
 }
 
 .about-project__description-blocks {
@@ -24,7 +25,7 @@
     padding-top: 70px;
 }
 
-.about-project__description-item{
+.about-project__description-item {
     display: block;
     max-width: 550px;
 }
@@ -40,7 +41,7 @@
     margin: 0;
 }
 
-.about-project__info{
+.about-project__info {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -49,4 +50,46 @@
     color: #FFFFFF;
     margin: 0;
     padding-top: 26px;
+}
+
+.about-project__chart {
+    display: grid;
+    grid-template-columns: 228px 1fr;
+    grid-template-rows: repeat(2, 36px);
+    max-width: 1140px;
+    margin: 0px auto;
+    padding: 110px 0 141px;
+}
+
+.about-project__week {
+    background: #303030;
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-project__week:first-of-type {
+    background-color: #3DDC84;
+    color: #000000;
+    
+}
+
+.about-project__week-info {
+    margin: 0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #8B8B8B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
