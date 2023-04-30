@@ -23,3 +23,7 @@
     max-width: 730px;
     padding: 189px 235px 151px;
 }
+
+.promo__description:last-child {
+    padding: 90px 0px 26px;
+}
