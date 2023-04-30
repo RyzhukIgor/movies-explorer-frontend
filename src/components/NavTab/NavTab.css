@@ -1,0 +1,32 @@
+.navigation {
+    display: flex;
+    margin: 0px auto;
+    padding: 0;
+    justify-content: center;
+    gap: 10px;
+    
+}
+
+.navigation__link {
+    text-decoration: none;
+    color: #fff
+}
+
+.navigation__item {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: #303030;
+    border-radius: 10px;
+    width: 96px;
+    text-align: center;
+    justify-content: center;
+    padding: 10px 0;
+}
