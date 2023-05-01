@@ -12,10 +12,6 @@
     border-bottom: 1px solid #DADADA;
 }
 
-.about-project__title:nth-last-child(2n) {
-    padding-top: 100px;
-}
-
 .about-project {
     max-width: 1280px;
     margin: 0px auto;
