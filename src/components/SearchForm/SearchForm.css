@@ -1,0 +1,27 @@
+.search {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.search__items {
+    max-width: 1140px;
+    opacity: 0.2;
+    border: 1.5px solid #AAAAAA;
+    border-radius: 8px;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search__input {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #8B8B8B;
+    background: #202020; 
+    border: none;
+    padding: 25px 0px 25px 25px;
+}
