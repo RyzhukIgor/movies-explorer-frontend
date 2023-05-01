@@ -56,6 +56,7 @@
 }
 
 .portfolio__icon {
-    width: 20px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
+    padding: 5px 6px 0px 0px;
 }

@@ -1,12 +1,32 @@
 .about-me__info {
-    max-width: 1140px;
+    max-width: 600px;
     margin: 0 auto;
     padding-top: 66px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    padding: 0;
 }
 
 .about-me {
     max-width: 1280px;
     margin: 0 auto;
+}
+
+.about-me__subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    margin: 0;
+    padding: 18px 0px 26px;
 }
 
 .about-me__name {
@@ -18,7 +38,6 @@
     letter-spacing: -0.04em;
     color: #FFFFFF;
     margin: 0;
-    padding-bottom: 18px;
 }
 
 .about-me__infoblock {
@@ -40,6 +59,12 @@
     color: #FFFFFF;
     margin-top: 99px;
     display: block;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
 }
 
 .about-me__avatar {
