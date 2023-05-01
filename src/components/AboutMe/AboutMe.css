@@ -1,0 +1,49 @@
+.about-me__info {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-top: 66px;
+}
+
+.about-me {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.about-me__name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0;
+    padding-bottom: 18px;
+}
+
+.about-me__infoblock {
+    max-width: 1140px;
+    margin: 0px auto;
+    padding: 66px 0 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-me__info-person {
+    max-width: 600px;
+    margin: 0;
+    display: inline-block;
+}
+
+.about-me__link {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding-top: 99px;
+    display: block;
+}
+
+.about-me__avatar {
+    border-radius: 10px;
+    max-width: 270px;
+    max-height: 327px;
+}

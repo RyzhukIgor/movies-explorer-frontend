@@ -1,4 +1,60 @@
 .techs {
     max-width: 1280px;
     margin: 0 auto;
+    background-color: #272727;
+}
+
+.techs__description {
+    margin: 0 auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    max-width: 730px;
+    padding: 90px 0px 26px;
+}
+
+.techs__subtitle {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    margin: 0 auto;
+    max-width: 460px;
+    padding-bottom: 100px;
+}
+
+.techs__stack {
+    list-style-type: none;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    display: flex;
+    max-width: 690px;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0px 0px 100px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.techs__stack-item {
+    background-color: #303030;
+    border-radius: 10px;
+    padding-top: 21px;
+    padding-bottom: 22px;
+    text-align: center;
+    width: 90px;
 }
