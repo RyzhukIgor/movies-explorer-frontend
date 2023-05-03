@@ -12,11 +12,15 @@ function SearchForm() {
                 </button>
             </form>
             <div className="search__checkbox-container">
-            <label className="search__checkbox" htmlFor="checkbox">
-                <input type="checkbox" className="search__input-checkbox" id="checkbox" />
-                <div className="search__slider"></div>
-            </label>
-            <p className="search__category">Короткометражки</p>
+                <label className="search__checkbox" htmlFor="checkbox">
+                    <input
+                        type="checkbox"
+                        className="search__input-checkbox"
+                        id="checkbox"
+                    />
+                    <div className="search__slider"></div>
+                </label>
+                <p className="search__category">Короткометражки</p>
             </div>
         </section>
     );

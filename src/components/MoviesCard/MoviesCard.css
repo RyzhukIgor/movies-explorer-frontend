@@ -1,0 +1,58 @@
+.card {
+    background: #222222;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.card__description {
+    display: block;
+}
+
+.card__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 14px 0 14px 14px;
+}
+
+.card__duration {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    margin: 0;
+    padding: 0 0 14px 14px;
+}
+
+.card__btn {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/flag.svg) no-repeat center;
+    background-color: #313131;
+    border: none;
+}
+
+.card__btn-active {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/flag-cover.svg) no-repeat center;
+    background-color: #3DDC84;
+    border: none;
+}
+
