@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App() {
     return (
@@ -13,7 +14,7 @@ function App() {
                         path="/"
                         element={
                             <>
-                                <Header />
+                                <Header logged={false} />
                                 <Main />
                                 <Footer />
                             </>
@@ -23,14 +24,23 @@ function App() {
                         path="/movies"
                         element={
                             <>
-                                <Header />
+                                <Header logged={true} />
                                 <Movies />
                                 <Footer />
                             </>
                         }
                     />
+                    <Route
+                        path="/saved-movies"
+                        element={
+                            <>
+                                <Header logged={true} />
+                                <SavedMovies />
+                                <Footer />
+                            </>
+                        }
+                    />
                 </Routes>
-                
             </div>
         </div>
     );

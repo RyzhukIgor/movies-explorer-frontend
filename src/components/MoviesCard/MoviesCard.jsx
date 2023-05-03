@@ -12,7 +12,7 @@ function MoviesCard() {
     return (
         <div className="card">
             <div className="card__description">
-                <h2 className="card__title">33 слова о дизайне </h2>
+                <h2 className="card__title">33 слова о дизайне 33 слова о дизайне </h2>
                 <p className="card__duration">1ч 47м</p>
             </div>
             <img className="сard__poster" src={Film} alt="заставка фильма" />
