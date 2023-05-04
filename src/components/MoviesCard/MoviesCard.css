@@ -72,3 +72,16 @@
     border: none;
 }
 
+.card__btn-delete {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/icon-delete-btn.svg) no-repeat center;
+    background-color: #313131;
+    border: none;
+    cursor: pointer;
+}
+

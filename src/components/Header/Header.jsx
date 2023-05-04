@@ -1,10 +1,11 @@
-import imgLogo from '../../images/logo.png';
+import Logo from "../Logo/Logo";
 import AccountIcon from "../../images/account-icon.svg"
+import { NavLink } from 'react-router-dom';
 
 function Header({logged}){
 return (
     <header className="header">
-        <img className="header__logo" src={imgLogo} alt='лого сервиса'/>
+        <Logo />
         { !logged ? (
         <nav className='header__buttons'>
         <button className="header__btn-signup">Регистрация</button>
@@ -12,8 +13,8 @@ return (
     </nav>
         ) : (<>
             <nav className='header__categories'>
-            <a href={Header.toString()} className="header__text">Фильмы</a>
-            <a href={Header.toString()} className="header__text">Сохраненные фильмы</a>
+            <NavLink className="header__text" to="/movies" >Фильмы</NavLink>
+            <NavLink className="header__text" to="/saved-movies">Сохраненные фильмы</NavLink>
             </nav>
             <div className='header__account'>
             <p className='header__username'>Аккаунт</p>

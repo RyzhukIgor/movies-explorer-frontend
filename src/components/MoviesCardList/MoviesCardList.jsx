@@ -1,29 +1,10 @@
-import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+function MoviesCardList({ children }) {
     return (
         <section className="cards">
-                <ul className="cards__list">
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
-                <MoviesCard className="cards__item" />
+            <ul className="cards__list">
+                {children}
             </ul>
-            <button
-                className="cards__btn"
-                type="button"
-                aria-label="показать больше"
-            >
-                Ещё
-            </button>
         </section>
     );
 }
