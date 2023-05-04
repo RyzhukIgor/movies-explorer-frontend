@@ -16,10 +16,10 @@ return (
             <NavLink className="header__text" to="/movies" >Фильмы</NavLink>
             <NavLink className="header__text" to="/saved-movies">Сохраненные фильмы</NavLink>
             </nav>
-            <div className='header__account'>
+            <NavLink className='header__account' to="/profile">
             <p className='header__username'>Аккаунт</p>
             <img src={AccountIcon} className='header__account-icon' alt="иконка аккаунт"/>
-            </div>
+            </NavLink>
             </>
         )}
 

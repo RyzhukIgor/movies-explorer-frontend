@@ -8,8 +8,6 @@
     padding: 18px 70px;
 }
 
-
-
 .header__buttons {
     display: flex;
 }
@@ -55,6 +53,7 @@
 
 .header__account {
     display: flex;
+    text-decoration: none;
 }
 
 .header__text {
@@ -94,9 +93,8 @@
     color: #FFFFFF;
     margin: 0;
     padding-right: 17px;
-
+    
 }
-
 
 .header__account-icon{
     background: #313131;
