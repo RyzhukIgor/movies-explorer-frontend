@@ -10,6 +10,7 @@
 
 .header__buttons {
     display: flex;
+    align-items: center;
 }
 
 .header__btn-signup {
@@ -18,7 +19,6 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-    align-items: center;
     text-align: right;
     color: #FFFFFF;
     background-color: inherit;
@@ -26,6 +26,7 @@
     margin: 0 30px 0 0;
     padding: 0;
     border: none;
+    text-decoration: none;
 }
 
 .header__btn-signin {
@@ -43,6 +44,7 @@
     border: none;
     padding: 8px 20px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .header__categories {

@@ -8,8 +8,8 @@ return (
         <Logo />
         { !logged ? (
         <nav className='header__buttons'>
-        <button className="header__btn-signup">Регистрация</button>
-        <button className="header__btn-signin">Войти</button>
+        <NavLink className="header__btn-signup" to="/signup">Регистрация</NavLink>
+        <NavLink className="header__btn-signin" to="/signin">Войти</NavLink>
     </nav>
         ) : (<>
             <nav className='header__categories'>
