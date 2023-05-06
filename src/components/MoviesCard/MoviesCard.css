@@ -5,6 +5,7 @@
     width: 100%;
     height: 271px;
     display: block;
+    cursor: pointer;
 }
 
 .сard__poster {
@@ -60,6 +61,10 @@
     cursor: pointer;
 }
 
+.card__btn:hover {
+    opacity: 0.8;
+}
+
 .card__btn-active {
     position: absolute;
     top: 19px;
@@ -70,6 +75,10 @@
     background: url(../../images/flag-cover.svg) no-repeat center;
     background-color: #3DDC84;
     border: none;
+}
+
+.card__btn-active:hover {
+    opacity: 0.7;
 }
 
 .card__btn-delete {

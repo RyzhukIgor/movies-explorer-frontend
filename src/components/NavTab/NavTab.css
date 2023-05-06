@@ -12,6 +12,10 @@
     color: #fff
 }
 
+.navigation__link:hover {
+    opacity: 0.8;
+}
+
 .navigation__item {
     font-family: 'Inter';
     font-style: normal;

@@ -67,6 +67,10 @@
     color: #FFFFFF;
 }
 
+.about-me__link:hover {
+    opacity: 0.8;
+}
+
 .about-me__avatar {
     border-radius: 10px;
     max-width: 270px;
