@@ -12,6 +12,12 @@
     padding: 0;
 }
 
+@media screen and (max-width: 768px) {
+    .about-me__info {
+        max-width: 364px;
+    }
+}
+
 .about-me {
     max-width: 1280px;
     margin: 0 auto;
@@ -48,6 +54,12 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 768px) {
+    .about-me__infoblock {
+        max-width: 668px;
+    }
+}
+
 .about-me__info-person {
     max-width: 600px;
     margin: 0;
@@ -65,6 +77,12 @@
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    .about-me__link  {
+        margin-top: 87px;
+    }
 }
 
 .about-me__link:hover {

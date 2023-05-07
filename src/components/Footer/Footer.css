@@ -17,6 +17,12 @@
     border-bottom: 1px solid #424242;
 }
 
+@media screen and (max-width: 768px) {
+    .footer__title {
+        max-width: 708px;
+    }
+}
+
 .footer__data {
     font-family: 'Inter';
     font-style: normal;

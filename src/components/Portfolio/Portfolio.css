@@ -17,11 +17,23 @@
     padding-bottom: 50px;
 }
 
+@media screen and (max-width: 768px) {
+    .portfolio__title{
+        max-width: 668px;
+    }
+}
+
 .portfolio__items {
     max-width: 1140px;
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .portfolio__items {
+        max-width: 668px;
+    }
 }
 
 .portfolio__link {
@@ -51,7 +63,7 @@
 
 .portfolio__item:last-child {
     border: none;
-    margin-bottom: 125px;
+    margin-bottom: 90px;
     padding-bottom: 0;
 }
 

@@ -3,9 +3,17 @@
     margin: 0 auto;
     display: flex;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     padding: 18px 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 18px 30px;
+        max-width: 768px;
+        margin: 0;
+    }
 }
 
 .header__buttons {
@@ -58,9 +66,22 @@
 
 }
 
+@media screen and (max-width: 768px) {
+    .header__categories {
+        display: none;
+    }
+}
+
+
 .header__account {
     display: flex;
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .header__account {
+        display: none;
+    }
 }
 
 .header__text {

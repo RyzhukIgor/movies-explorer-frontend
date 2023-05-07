@@ -1,0 +1,20 @@
+.burger__button {
+    background: url(../../images/icon-burger.svg) no-repeat center ;
+    width: 44px;
+    height: 44px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.burger {
+    display: flex;
+    justify-content: space-between;
+    max-width: 520px;
+}
+
+@media screen and (min-width: 769px) {
+    .burger {
+        display: none;
+    }
+}

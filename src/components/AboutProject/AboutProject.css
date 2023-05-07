@@ -12,10 +12,18 @@
     border-bottom: 1px solid #DADADA;
 }
 
+@media screen and (max-width: 768px) {
+    .about-project__title{
+        max-width: 668px;
+        padding-top: 90px;
+    }
+}
+
 .about-project {
     max-width: 1280px;
     margin: 0px auto;
 }
+
 
 .about-project__description-blocks {
     display: flex;
@@ -23,6 +31,13 @@
     gap: 40px;
     margin: 0px auto;
     padding-top: 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project__description-blocks{
+        max-width: 668px;
+
+    }
 }
 
 .about-project__description-item {
@@ -59,6 +74,13 @@
     max-width: 1140px;
     margin: 0px auto;
     padding: 110px 0 105px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project__chart{
+        max-width: 668px;
+        padding: 93px 0 90px;
+    }
 }
 
 .about-project__week {

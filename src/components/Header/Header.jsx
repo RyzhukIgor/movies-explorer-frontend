@@ -1,6 +1,7 @@
 import Logo from "../Logo/Logo";
 import AccountIcon from "../../images/account-icon.svg"
 import { NavLink } from 'react-router-dom';
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 function Header({logged}){
 return (
@@ -20,6 +21,7 @@ return (
             <p className='header__username'>Аккаунт</p>
             <img src={AccountIcon} className='header__account-icon' alt="иконка аккаунт"/>
             </NavLink>
+            <BurgerMenu />
             </>
         )}
 
