@@ -18,17 +18,35 @@
 }
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
     .cards__list {
         grid-template-columns: 1fr 1fr;
         row-gap: 35px;
-     
+        
     }
 }
 
+
 @media screen and (max-width: 768px) {
     .cards {
-        max-width: 708px;
+        max-width: 1024px;
+        padding-top: 55px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cards {
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cards__list {
+        grid-template-columns: 1fr;
+        margin: 0 14px;
+        row-gap: 12px;
     }
 }
 

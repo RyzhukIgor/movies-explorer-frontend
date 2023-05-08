@@ -11,7 +11,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function App() {
     return (
-        <div className="App">
+        <div className="app">
             <div className="page">
                 <Routes>
                     <Route

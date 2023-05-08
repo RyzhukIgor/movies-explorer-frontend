@@ -25,6 +25,16 @@
     cursor: pointer;
 }
 
+
+
 .more__btn:hover {
     opacity: 0.8;
 }
+
+@media screen and (max-width: 480px) {
+    .more__btn{
+        width: 240px;
+margin-bottom: 140px;
+    }
+}
+

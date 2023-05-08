@@ -15,8 +15,14 @@
     padding-top: 48px;
 }
 
+@media screen and (max-width: 480px) {
+    .search__items {
+        padding-top: 63px;
+    }
+}
+
 @media screen and (max-width: 768px) {
-    .search__items  {
+    .search__items {
         max-width: 708px;
     }
 }
@@ -36,6 +42,17 @@
     border: 1.5px solid rgba(139, 139, 139, 0.2);
     border-radius: 8px;
 }
+
+@media screen and (max-width: 480px) {
+    .search__input {
+        margin: 0 14px;
+        font-size: 16px;
+        line-height: 16px;
+        padding: 20px 0px 20px 12px;
+
+    }
+}
+
 
 .search__input:focus {
     outline: none;
@@ -61,7 +78,16 @@
     cursor: pointer;
 }
 
-.search_button:hover{
+@media screen and (max-width: 480px) {
+    .search_button {
+        width: 80px;
+        height: 44px;
+        top: 72px;
+        right: 21px;
+    }
+}
+
+.search_button:hover {
     opacity: 0.8;
 }
 
@@ -77,9 +103,18 @@
 }
 
 @media screen and (max-width: 768px) {
-    .search__checkbox-container   {
+    .search__checkbox-container {
         max-width: 708px;
         padding-bottom: 52px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search__checkbox-container {
+        margin: 0 14px;
+        padding-bottom: 64px;
+        padding-top: 30px;
+
     }
 }
 
@@ -136,4 +171,11 @@
     font-size: 13px;
     line-height: 18px;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 480px) {
+    .search__category {
+        font-size: 11px;
+        line-height: 18px;
+    }
 }

@@ -3,14 +3,22 @@
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     position: relative;
     width: 100%;
-    max-height: 258px;
+    max-height: 271px;
     display: block;
     cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
-    .card  {
-       max-height: 271px; ;
+    .card {
+        height: 258px;
+        max-width: 339px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        max-width: 300px;
+        max-height: 236px;
     }
 }
 
@@ -19,6 +27,12 @@
     display: block;
     width: 100%;
     padding-top: 11px;
+}
+
+@media screen and (max-width: 480px) {
+    .сard__poster{
+        height: 168px;
+    }
 }
 
 .card__description {
@@ -38,7 +52,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: 280px;
+    max-width: 200px;
 }
 
 .card__duration {
@@ -83,6 +97,14 @@
     border: none;
 }
 
+
+@media screen and (max-width: 480px) {
+    .card__btn{
+        top: 18px;
+        right: 10px;
+    }
+}
+
 .card__btn-active:hover {
     opacity: 0.7;
 }
@@ -99,4 +121,3 @@
     border: none;
     cursor: pointer;
 }
-

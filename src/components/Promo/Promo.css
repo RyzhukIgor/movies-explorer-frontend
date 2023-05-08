@@ -44,7 +44,7 @@
     padding: 189px 235px 151px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1124px) {
     .promo__description {
         font-family: 'Inter';
         font-style: normal;
@@ -65,6 +65,6 @@
         line-height: 37px;
         max-width: 292px;
         padding: 220px 0 213px;
-        margin: 13px 0 0;
+
     }
 }

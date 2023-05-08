@@ -7,6 +7,15 @@
     padding: 0;
 }
 
+@media screen and (max-width: 480px) {
+    .burger__button  {
+        width: 40px;
+        height: 43px;
+        background-size: 100%;
+        background-size: contain;
+    }
+}
+
 .burger__button:hover {
     opacity: 0.7;
 }
