@@ -12,7 +12,7 @@ function SearchForm() {
                 </button>
             </form>
             <div className="search__checkbox-container">
-                <label className="search__checkbox" htmlFor="checkbox">
+                <label className="search__checkbox" htmlFor="checkbox" checked>
                     <input
                         type="checkbox"
                         className="search__input-checkbox"

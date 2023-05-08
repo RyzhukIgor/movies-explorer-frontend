@@ -4,10 +4,8 @@
     padding: 0;
     justify-content: center;
     gap: 10px;
-    
+
 }
-
-
 
 .navigation__link {
     text-decoration: none;
@@ -35,4 +33,13 @@
     text-align: center;
     justify-content: center;
     padding: 10px 0;
+}
+
+@media screen and (max-width: 480px) {
+    .navigation__item {
+        font-size: 10px;
+        line-height: 16px;
+        padding: 5px 0;
+        width: 82px;
+    }
 }

@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+.burger__button:hover {
+    opacity: 0.7;
+}
+
 .burger {
     display: flex;
     justify-content: space-between;

@@ -15,6 +15,46 @@
 @media screen and (max-width: 768px) {
     .about-me__info {
         max-width: 364px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__info {
+        font-size: 11px;
+        line-height: 16px;
+        grid-area: description;
+    }
+}
+
+.about-me__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 110px 0 23px;
+    border-bottom: 1px solid #DADADA;
+}
+
+@media screen and (max-width: 768px) {
+    .about-me__title {
+        max-width: 668px;
+        padding-top: 90px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__title {
+        margin: 0 18px;
+        font-size: 18px;
+        line-height: 22px;
+        padding-top: 50px;
     }
 }
 
@@ -35,6 +75,24 @@
     padding: 18px 0px 26px;
 }
 
+@media screen and (max-width: 768px) {
+    .about-me__subtitle {
+        font-size: 12px;
+        line-height: 18px;
+        padding-bottom: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__subtitle {
+        font-size: 11px;
+        line-height: 16px;
+        grid-area: job;
+        padding-top: 20px;
+    }
+}
+
 .about-me__name {
     font-family: 'Inter';
     font-style: normal;
@@ -44,6 +102,22 @@
     letter-spacing: -0.04em;
     color: #FFFFFF;
     margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .about-me__name {
+        font-size: 40px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__name {
+        font-size: 30px;
+        line-height: 36px;
+        grid-area: name;
+        padding-top: 40px;
+    }
 }
 
 .about-me__infoblock {
@@ -57,6 +131,22 @@
 @media screen and (max-width: 768px) {
     .about-me__infoblock {
         max-width: 668px;
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__infoblock {
+        margin: 0 14px;
+        display: grid;
+        grid-template-areas:
+        'photo'
+        'name'
+        'job'
+        'description'
+        'link';
+        justify-content: center;
+        padding-bottom: 65px;
     }
 }
 
@@ -80,10 +170,17 @@
 }
 
 @media screen and (max-width: 768px) {
-    .about-me__link  {
-        margin-top: 87px;
+    .about-me__link {
+        margin-top: 65px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .about-me__link {
+        margin-top: 40px;
+    }
+}
+
 
 .about-me__link:hover {
     opacity: 0.8;
@@ -93,4 +190,20 @@
     border-radius: 10px;
     max-width: 270px;
     max-height: 327px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-me__avatar {
+        max-width: 255px;
+        max-height: 307px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me__avatar {
+        min-width: 292px;
+        min-height: 352px;
+        grid-area: photo;
+        margin: 0 auto;
+    }
 }

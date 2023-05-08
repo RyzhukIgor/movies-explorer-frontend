@@ -3,6 +3,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     padding-top: 70px;
+    max-width: 1280px;
 }
 
 
@@ -13,10 +14,21 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 24px;
-    row-gap: 30px;
+    row-gap: 44px;
 }
 
-.cards__item {
-    max-width: 364px;
+
+@media screen and (max-width: 1024px) {
+    .cards__list {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 35px;
+     
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards {
+        max-width: 708px;
+    }
 }
 

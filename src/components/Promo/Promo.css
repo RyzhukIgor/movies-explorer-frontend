@@ -14,13 +14,19 @@
     background-color: #272727;
     border-radius: 10px;
     max-width: 1200px;
-    margin: -9px 40px 0px;
+    margin: -52px 40px 0px;
 }
 
 @media screen and (max-width: 768px) {
     .promo__block  {
      margin: 0 20px 0;
      padding-bottom: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .promo__block {
+        padding-bottom: 15px;
     }
 }
 
@@ -50,5 +56,15 @@
         color: #FFFFFF;
         max-width: 680px;
         padding: 350px 0 314px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .promo__description {
+        font-size: 29px;
+        line-height: 37px;
+        max-width: 292px;
+        padding: 220px 0 213px;
+        margin: 13px 0 0;
     }
 }
