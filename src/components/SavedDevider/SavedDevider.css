@@ -5,3 +5,9 @@
     min-height: 140px;
     background: #202020;
 }
+
+@media screen and (max-width: 480px) {
+    .saved-devider {
+        min-height: 200px;
+    }
+}

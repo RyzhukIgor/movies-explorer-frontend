@@ -14,7 +14,13 @@ function Movies() {
                 <MoviesCard />
                 <MoviesCard />
                 <MoviesCard />
-
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
             </MoviesCardList>
             <MoreButton />
         </>

@@ -95,6 +95,18 @@
     padding-bottom: 0;
 }
 
+@media screen and (max-width: 768px) {
+    .portfolio__item:last-child  {
+        margin-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .portfolio__item:last-child  {
+        margin-bottom: 130px;
+    }
+}
+
 .portfolio__description {
     margin: 0;
 }

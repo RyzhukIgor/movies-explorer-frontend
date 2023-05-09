@@ -15,15 +15,16 @@
     padding-top: 48px;
 }
 
-@media screen and (max-width: 480px) {
-    .search__items {
-        padding-top: 63px;
-    }
-}
-
 @media screen and (max-width: 768px) {
     .search__items {
         max-width: 708px;
+        padding-top: 65px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search__items {
+        padding-top: 63px;
     }
 }
 
@@ -76,6 +77,13 @@
     width: 102px;
     height: 52px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .search_button {
+        top: 76px;
+        right: 10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
