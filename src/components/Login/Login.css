@@ -1,25 +1,25 @@
-.form-login {
+.login {
     max-width: 1280px;
     margin: 0 auto;
     position: relative;
     height: 100vh;
 }
 
-.form__greeting-login {
+.login__greeting {
     max-width: 396px;
     margin: 0 auto;
     padding: 70px 0 40px;
 }
 
 @media screen and (max-width: 480px) {
-    .form__greeting-login {
+    .login__greeting{
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
 
-.form__inputs-login {
+.login__inputs {
     border: none;
     display: grid;
     max-width: 396px;
@@ -28,13 +28,13 @@
 }
 
 @media screen and (max-width: 480px) {
-    .form__inputs-login {
+    .login__inputs {
         margin: 0 30px;
     }
 }
 
-.form__title-login {
-    font-family: 'Inter';
+.login__title {
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
@@ -45,14 +45,14 @@
 }
 
 @media screen and (max-width: 480px) {
-    .form__title-login {
+    .login__title{
         padding-top: 48px;
         padding-bottom: 40px;
     }
 }
 
-.form__label-login {
-    font-family: 'Inter';
+.login__label {
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
@@ -63,7 +63,7 @@
 }
 
 
-.form__input-login {
+.login__input {
     margin: 0 0 20px 0;
     padding: 15px;
     background: #2F2F2F;
@@ -78,17 +78,17 @@
     cursor: pointer;
 }
 
-.form__input-login:nth-last-child(2) {
+.login__input:nth-last-child(2) {
     margin-bottom: 0px;
 }
 
-.form__input-login:focus {
+.login__input:focus {
     outline: none;
 }
 
-.form__input-error-login {
+.login__input-error {
     display: block;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
@@ -98,11 +98,11 @@
     visibility: hidden;
 }
 
-.form__submit-login {
+.login__submit {
     width: 100%;
     background: #4285F4;
     border-radius: 3px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -115,7 +115,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .form__submit-login {
+    .login__submit {
         margin-top: 225px;
         font-size: 12px;
         line-height: 15px;
@@ -123,8 +123,8 @@
 }
 
 
-.form__text-login {
-    font-family: 'Inter';
+.login__text{
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -137,7 +137,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .form__text-login {
+    .login__text {
         font-size: 12px;
         line-height: 15px;
         padding-top: 12px;
@@ -145,9 +145,9 @@
 }
 
 
-.form__link-login {
+.login__link {
     text-decoration: none;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -158,7 +158,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .form__link-login {
+    .login__link {
         font-size: 12px;
         line-height: 15px;
     }

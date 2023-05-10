@@ -4,7 +4,7 @@ function AboutMe() {
     return (
         <section className="about-me" id="about-me">
             <h2 className="about-me__title">Студент</h2>
-            <article className="about-me__infoblock">
+            <article className="about-me__info-block">
                 <div className="about-me__info-person">
                     <h3 className="about-me__name">Виталий</h3>
                     <h4 className="about-me__subtitle">
@@ -18,7 +18,7 @@ function AboutMe() {
                         как прошёл курс по веб-разработке, начал заниматься
                         фриланс-заказами и ушёл с постоянной работы.
                     </p>
-                    <a className="about-me__link" href="github.com">Github</a>
+                    <a className="about-me__link" href="https://github.com/RyzhukIgor" target="_blank" rel="noreferrer">Github</a>
                 </div>
                 <img src={Avatar} alt="аватар студента" className="about-me__avatar" />
             </article>

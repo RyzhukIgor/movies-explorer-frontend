@@ -2,7 +2,7 @@
     max-width: 600px;
     margin: 0 auto;
     padding-top: 66px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -29,7 +29,7 @@
 }
 
 .about-me__title {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -37,7 +37,7 @@
     letter-spacing: -0.04em;
     color: #FFFFFF;
     max-width: 1140px;
-    margin: 0 auto;
+    margin: 0;
     padding: 110px 0 23px;
     border-bottom: 1px solid #DADADA;
 }
@@ -51,20 +51,32 @@
 
 @media screen and (max-width: 480px) {
     .about-me__title {
-        margin: 0 18px;
+        margin: 0;
         font-size: 18px;
         line-height: 22px;
-        padding-top: 50px;
+        padding: 45px 0 28px;
     }
 }
 
 .about-me {
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-me {
+        margin: 0 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me {
+        margin: 0 14px;
+    }
 }
 
 .about-me__subtitle {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -94,7 +106,7 @@
 }
 
 .about-me__name {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -120,24 +132,24 @@
     }
 }
 
-.about-me__infoblock {
+.about-me__info-block {
     max-width: 1140px;
-    margin: 0px auto;
+    margin: 0px;
     padding: 66px 0 100px;
     display: flex;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 768px) {
-    .about-me__infoblock {
+    .about-me__info-block {
         max-width: 668px;
         padding-bottom: 90px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .about-me__infoblock {
-        margin: 0 14px;
+    .about-me__info-block {
+        margin: 0;
         display: grid;
         grid-template-areas:
         'photo'
@@ -146,7 +158,7 @@
         'description'
         'link';
         justify-content: center;
-        padding-bottom: 65px;
+        padding: 60px 0 69px;
     }
 }
 
@@ -159,7 +171,7 @@
 .about-me__link {
     text-decoration: none;
     color: #FFFFFF;
-    margin-top: 99px;
+    margin: 99px 0 0;
     display: block;
     font-family: 'Inter';
     font-style: normal;

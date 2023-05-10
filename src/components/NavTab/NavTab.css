@@ -7,6 +7,12 @@
 
 }
 
+@media screen and (max-width: 480px) {
+    .navigation {
+        gap: 5px;
+    }
+}
+
 .navigation__link {
     text-decoration: none;
     color: #fff
@@ -17,7 +23,7 @@
 }
 
 .navigation__item {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -41,5 +47,6 @@
         line-height: 16px;
         padding: 5px 0;
         width: 82px;
+        border-radius: 5px;
     }
 }

@@ -4,34 +4,38 @@ import Logo from "../Logo/Logo";
 
 function Login() {
     return(
-        <section className="form-login">
-        <div className="form__greeting-login">
+        <section className="login">
+        <div className="login__greeting">
           <Logo />
-          <h2 className="form__title-login">Рады видеть!</h2>
+          <h2 className="login__title">Рады видеть!</h2>
         </div>
-          <fieldset className="form__inputs-login">
-          <label className="form__label-login" htmlFor="email">E-mail</label>
+          <fieldset className="login__inputs">
+          <label className="login__label" htmlFor="email">E-mail</label>
           <input 
-            className="form__input-login" 
+            className="login__input" 
             type="email" 
             id="email" 
             name="email" 
             defaultValue="pochta@yandex.ru"
+            required 
+            placeholder="Введите email"
           />
-          <label className="form__label-login" htmlFor="password">Пароль</label>
+          <label className="login__label" htmlFor="password">Пароль</label>
           <input 
-            className="form__input-login" 
+            className="login__input" 
             type="password" 
             id="password" 
             name="password"  
+            required 
+            placeholder="Введите пароль"
           />
-          <span className="form__input-error-login" >Что-то пошло не так... </span>
-          <button className="form__submit-login" type="submit">Войти</button>
+          <span className="login__input-error" >Что-то пошло не так... </span>
+          <button className="login__submit" type="submit">Войти</button>
          </fieldset>
    
-        <p className="form__text-login">
+        <p className="login__text">
           Ещё не зарегистрированы?
-          <NavLink className="form__link-login" to="/signup">Регистрация</NavLink>
+          <NavLink className="login__link" to="/signup">Регистрация</NavLink>
         </p>
       </section>
     );

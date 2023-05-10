@@ -28,7 +28,7 @@
 }
 
 .header__btn-signup {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -58,7 +58,7 @@
 .header__btn-signin {
     background: #3DDC84;
     border-radius: 3px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -126,7 +126,7 @@
 }
 
 .header__text-active {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
@@ -136,7 +136,7 @@
 }
 
 .header__username {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

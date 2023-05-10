@@ -7,18 +7,18 @@ function SearchForm() {
                     placeholder="Фильм"
                     name="films"
                 />
-                <button type="button" className="search_button">
+                <button type="submit" className="search__button">
                     Поиск
                 </button>
             </form>
             <div className="search__checkbox-container">
-                <label className="search__checkbox" htmlFor="checkbox" checked>
+                <label className="search__checkbox"  checked>
                     <input
                         type="checkbox"
                         className="search__input-checkbox"
                         id="checkbox"
                     />
-                    <div className="search__slider"></div>
+                    <span className="search__slider"></span>
                 </label>
                 <p className="search__category">Короткометражки</p>
             </div>

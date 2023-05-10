@@ -1,5 +1,5 @@
 .about-project__title {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 22px;
@@ -7,21 +7,21 @@
     letter-spacing: -0.04em;
     color: #FFFFFF;
     max-width: 1140px;
-    margin: 0 auto;
-    padding: 110px 0 23px;
+    margin: 0;
+    padding: 142px 0 23px;
     border-bottom: 1px solid #DADADA;
 }
 
 @media screen and (max-width: 768px) {
     .about-project__title {
         max-width: 668px;
-        padding-top: 62px;
+        padding-top: 60px;
     }
 }
 
 @media screen and (max-width: 480px) {
     .about-project__title {
-        padding-top: 47px;
+        padding-top: 74px;
         font-size: 18px;
         line-height: 22px;
     }
@@ -29,7 +29,13 @@
 
 .about-project {
     max-width: 1280px;
-    margin: 0px auto;
+    margin: 0px 70px;
+}
+
+@media screen and (max-width: 768px) {
+    .about-project {
+        margin: 0px 50px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -43,7 +49,7 @@
     display: flex;
     max-width: 1140px;
     gap: 40px;
-    margin: 0px auto;
+    margin: 0px;
     padding-top: 70px;
 }
 
@@ -68,7 +74,7 @@
 }
 
 .about-project__subtitle {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -86,7 +92,7 @@
 }
 
 .about-project__info {
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -117,7 +123,7 @@
     grid-template-columns: 228px 1fr;
     grid-template-rows: repeat(2, 36px);
     max-width: 1140px;
-    margin: 0px auto;
+    margin: 0px;
     padding: 110px 0 105px;
 }
 
@@ -139,7 +145,7 @@
 .about-project__week {
     background: #303030;
     margin: 0;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -166,7 +172,7 @@
 
 .about-project__week-info {
     margin: 0;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

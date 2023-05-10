@@ -1,14 +1,26 @@
 .search {
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 70px;
     position: relative;
     box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+    .search {
+        margin: 0 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search {
+        margin: 0 14px;
+    }
 }
 
 .search__items {
     position: relative;
     max-width: 1140px;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     display: flex;
     justify-content: space-between;
@@ -30,7 +42,7 @@
 
 .search__input {
     position: relative;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     width: 100%;
     font-style: normal;
     font-weight: 400;
@@ -46,7 +58,7 @@
 
 @media screen and (max-width: 480px) {
     .search__input {
-        margin: 0 14px;
+        margin: 0;
         font-size: 16px;
         line-height: 16px;
         padding: 20px 0px 20px 12px;
@@ -54,14 +66,9 @@
     }
 }
 
-
-.search__input:focus {
-    outline: none;
-}
-
-.search_button {
+.search__button {
     position: absolute;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -72,6 +79,8 @@
     background: #4285F4;
     color: #FFFFFF;
     border-radius: 5px;
+    box-sizing: border-box;
+    border: none;
     padding: 0;
     margin: 0;
     width: 102px;
@@ -80,34 +89,33 @@
 }
 
 @media screen and (max-width: 768px) {
-    .search_button {
+    .search__button {
         top: 76px;
         right: 10px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .search_button {
+    .search__button {
         width: 80px;
         height: 44px;
-        top: 72px;
-        right: 21px;
+        top: 74px;
+        right: 6px;
     }
 }
 
-.search_button:hover {
+.search__button:hover {
     opacity: 0.8;
 }
 
 .search__checkbox-container {
     max-width: 1140px;
-    margin: 0 auto 10px;
+    margin: 0 0 10px;
     padding-top: 26px;
     display: flex;
     align-items: center;
     padding-bottom: 46px;
     border-bottom: 1px solid rgba(170, 170, 170, 20%);
-
 }
 
 @media screen and (max-width: 768px) {
@@ -119,7 +127,7 @@
 
 @media screen and (max-width: 480px) {
     .search__checkbox-container {
-        margin: 0 14px;
+        margin: 0;
         padding-bottom: 64px;
         padding-top: 30px;
 
@@ -173,7 +181,7 @@
 .search__category {
     margin: 0;
     padding-left: 14px;
-    font-family: 'Inter';
+    font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 13px;

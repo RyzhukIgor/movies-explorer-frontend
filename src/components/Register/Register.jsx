@@ -17,6 +17,10 @@ function Register() {
             id="username" 
             name="username" 
             defaultValue="Виталий"
+            minLength="2" 
+            maxLength="30" 
+            required 
+            placeholder="Введите имя" 
           />
           <label className="form__label" htmlFor="email">E-mail</label>
           <input 
@@ -25,6 +29,8 @@ function Register() {
             id="email" 
             name="email" 
             defaultValue=""
+            required 
+            placeholder="Введите email" 
           />
           <label className="form__label" htmlFor="password">Пароль</label>
           <input 
@@ -32,7 +38,9 @@ function Register() {
             type="password" 
             id="password" 
             name="password" 
-            defaultValue="••••••••••••••" 
+            defaultValue="••••••••••••••"
+            required 
+            placeholder="Введите пароль"  
           />
           <span className="form__input-error" >Что-то пошло не так... </span>
           <button className="form__submit" type="submit">Зарегистрироваться</button>

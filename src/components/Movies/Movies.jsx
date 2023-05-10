@@ -6,7 +6,6 @@ import MoreButton from "../MoreButton/MoreButton";
 function Movies() {
     return (
         <>
-        
             <SearchForm />
             <MoviesCardList>
                 <MoviesCard />
