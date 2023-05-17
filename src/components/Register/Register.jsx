@@ -9,7 +9,7 @@ function Register({handleRegister, isRegOk}) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const { name, email, password } = values;
-    handleRegister(name, email, password);
+    handleRegister({ name, email, password });
 
 }
 
@@ -21,12 +21,12 @@ function Register({handleRegister, isRegOk}) {
         </div>
         <form onSubmit={handleSubmit} noValidate>
         <fieldset className="form__inputs">
-          <label className="form__label" htmlFor="username">Имя</label>
+          <label className="form__label" htmlFor="name">Имя</label>
           <input 
             className="form__input"
             type="text" 
             id="username" 
-            name="username" 
+            name="name" 
             value={values["name"]}
             onChange={handleChange}
             required 
