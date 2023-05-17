@@ -3,11 +3,11 @@ import AccountIcon from "../../images/account-icon.svg"
 import { NavLink } from 'react-router-dom';
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
-function Header({logged}){
+function Header({isLoggedIn}){
 return (
     <header className="header">
         <Logo />
-        { !logged ? (
+        { !isLoggedIn ? (
         <nav className='header__buttons'>
         <NavLink className="header__btn-signup" to="/signup">Регистрация</NavLink>
         <NavLink className="header__btn-signin" to="/signin">Войти</NavLink>

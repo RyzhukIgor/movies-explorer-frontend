@@ -195,3 +195,10 @@
         line-height: 18px;
     }
 }
+
+.search__error{
+        position: absolute;
+        top: 130px;
+        left: 80px;
+        color: #f5f2f2;
+}
