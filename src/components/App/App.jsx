@@ -81,12 +81,10 @@ function App() {
                         path="/movies"
                         isLoggedIn={isLoggedIn}
                         element={
-                            <ProtectedRoute>
-                            <>
+                            <ProtectedRoute isLoggedIn={isLoggedIn}>
                                 <Header isLoggedIn={isLoggedIn} />
                                 <Movies />
                                 <Footer />
-                            </>
                             </ProtectedRoute>
                         }
                     />
