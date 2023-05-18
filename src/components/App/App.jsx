@@ -14,9 +14,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-
-
-
+import { login, checkAuth } from "../../utils/auth";
 
 
 function App() {
@@ -25,18 +23,6 @@ function App() {
     const [isRegOk, setIsRegOk] = useState(true);
     const navigate = useNavigate();
 
-    const tokenCheck = async() => {
-        if (localStorage.getItem('token')) {
-          const token = localStorage.getItem('token');
-          try {
-            const userData = await mainApi.getUserInfo(token);
-            setCurrentUser(...currentUser, userData);
-            setIsLoggedIn(true);
-          } catch (err) {
-            console.log(err);
-          }
-        }
-      }
 
       const handleRegister = async({name, email, password}) => {
         try{
@@ -49,12 +35,13 @@ function App() {
         }
       };
 
-      const handleLogin = async({email, password}) => {
+      const handleLogin = async({ email, password}) => {
         try {
-          const { token } = await mainApi.login({email, password});
-          localStorage.setItem('token', token);
+          const { token } = await login({ email, password});
+          localStorage.setItem('jwt', token);
           setIsLoggedIn(true);
           navigate("/movies");
+          console.log("done")
         } catch (err) {
           console.log(err);
           setIsLoggedIn(false);
@@ -62,8 +49,18 @@ function App() {
       };
 
       useEffect(() => {
-        tokenCheck();
-      }, [isLoggedIn]);
+        const jwt = localStorage.getItem('jwt');
+    
+        if (jwt) {
+          checkAuth(jwt)
+            .then((user) => {
+              setCurrentUser(user)
+              setIsLoggedIn(true);
+              navigate("/movies");
+            })
+            .catch((err) => console.log(err));
+        }
+      }, [])
    
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -119,7 +116,7 @@ function App() {
                         }
                     />
                     <Route path="/signup" element={<Register handleRegister={handleRegister} isRegOk={isRegOk} isLoggedIn={isLoggedIn}/>} />
-                    <Route path="/signin" element={<Login handleLogin={handleLogin} isLoggedIn={isLoggedIn}/>} />
+                    <Route path="/signin" element={<Login onSubmit={handleLogin} isLoggedIn={isLoggedIn} />} />
                     <Route path="*" element={<NotFoundPage isLoggedIn={isLoggedIn}/>} />
                 </Routes>
                 

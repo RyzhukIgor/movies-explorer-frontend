@@ -163,3 +163,13 @@
         line-height: 15px;
     }
 }
+
+.login__error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.21em;
+    color: #f80000;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 3px;
+}

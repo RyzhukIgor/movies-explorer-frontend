@@ -10,9 +10,17 @@ class MainApi {
         }
     }
 
-    _getAuthorization() {
-        return `Bearer ${localStorage.getItem("jwt")}`;
+    async checkAuth( token )  {
+        const res = await fetch(`${this._baseUrl}/users/me`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        return this._checkResponse(res);
     }
+
 
     async register({ name, email, password }) {
         const res = await fetch(`${this._baseUrl}/signup`, {
@@ -33,7 +41,8 @@ class MainApi {
         const res = await fetch(`${this._baseUrl}/signin`, {
             method: "POST",
             headers: this._headers,
-            body: JSON.stringify({ email: email, password: password }),
+            body: JSON.stringify({"email": `${email}`,
+            "password": `${password}`}),
         });
         this._checkResponse(res, "Ошибка авторизации пользователя");
         const data = await res.json();
@@ -125,7 +134,8 @@ class MainApi {
 const mainApi = new MainApi({
     baseUrl: "https://api.bitfilms.nomoredomains.monster",
     headers: {
-        "Content-Type": "application/json",
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
     },
 });
 
