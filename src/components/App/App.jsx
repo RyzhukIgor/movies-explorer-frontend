@@ -15,7 +15,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import mainApi from "../../utils/MainApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-//import { register, login, getUserData } from '../../utils/Auth';
+
 
 
 
@@ -38,20 +38,20 @@ function App() {
         }
       }
 
-      const handleRegister = async(name, email, password) => {
+      const handleRegister = async({name, email, password}) => {
         try{
-          const userData = await mainApi.register(name, email, password);
+          const userData = await mainApi.register({name, email, password});
           setIsRegOk(true);
-          await handleLogin(email, password);
           setCurrentUser(userData);
+          navigate("/signin");
         } catch (err) {
           setIsRegOk(false);
         }
       };
 
-      const handleLogin = async(email, password) => {
+      const handleLogin = async({email, password}) => {
         try {
-          const { token } = await mainApi.login(email, password);
+          const { token } = await mainApi.login({email, password});
           localStorage.setItem('token', token);
           setIsLoggedIn(true);
           navigate("/movies");

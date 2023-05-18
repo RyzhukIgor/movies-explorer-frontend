@@ -1,7 +1,7 @@
 class MainApi {
     constructor(options) {
         this._baseUrl = options.baseUrl;
-        this._headers = options._headers;
+        this._headers = options.headers;
     }
 
     _checkResponse(res, errMessage) {
