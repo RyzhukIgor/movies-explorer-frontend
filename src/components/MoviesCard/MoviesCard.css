@@ -3,9 +3,9 @@
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     position: relative;
     max-width: 364px;
-
     display: block;
     cursor: pointer;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
@@ -22,10 +22,11 @@
 }
 
 .сard__poster {
-    object-fit: cover;
+    object-fit:cover;
     display: block;
     width: 100%;
     padding-top: 11px;
+    height: 100%;
 }
 
 @media screen and (max-width: 480px) {

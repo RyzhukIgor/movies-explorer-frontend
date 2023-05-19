@@ -167,7 +167,7 @@ function Movies(props) {
             handleFilmUnsave={handleFilmUnsave}
             />
             {!(filmsPerLoad >= queryFilteredFilms.length) && (
-              <MoreButton onClick={handleLoadMoreButtonClick} />
+              <MoreButton moreButtonClick={handleLoadMoreButtonClick} />
             )}
           </>
         )) ||
