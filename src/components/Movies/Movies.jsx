@@ -160,11 +160,11 @@ function Movies(props) {
         )) ||
         ((filmsLoaded || queryFilteredFilms.length) && (
           <>
-            <MoviesCardList 
-            cards={queryFilteredFilms.slice(0, filmsPerLoad)} 
-            handleFilmSave={handleFilmSave}
-            savedMovies={savedMovies}
-            handleFilmUnsave={handleFilmUnsave}
+            <MoviesCardList
+              cards={queryFilteredFilms.slice(0, filmsPerLoad)}
+              handleFilmSave={handleFilmSave}
+              savedMovies={savedMovies}
+              handleFilmUnsave={handleFilmUnsave}
             />
             {!(filmsPerLoad >= queryFilteredFilms.length) && (
               <MoreButton moreButtonClick={handleLoadMoreButtonClick} />

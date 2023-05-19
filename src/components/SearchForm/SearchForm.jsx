@@ -30,7 +30,11 @@ function SearchForm(props) {
           Поиск
         </button>
       </form>
-      <div className="search__checkbox-container" onChange={onToggleChange} shortsToggleSwitch={shortsToggleSwitch}>
+      <div
+        className="search__checkbox-container"
+        onChange={onToggleChange}
+        shortsToggleSwitch={shortsToggleSwitch}
+      >
         <label className="search__checkbox" checked>
           <input
             type="checkbox"
