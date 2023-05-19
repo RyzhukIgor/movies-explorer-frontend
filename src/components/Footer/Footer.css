@@ -79,6 +79,11 @@
     background-color: #202020;
 }
 
+@media screen and (min-width: 1281px) {
+    .footer__info {
+        margin: 0 auto;
+    }
+}
 
 @media screen and (max-width: 768px) {
     .footer__info {
