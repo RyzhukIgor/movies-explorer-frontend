@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { useLocation } from "react-router-dom";
 
-import Film from "../../images/01.jpg";
 
-function MoviesCard() {
+function MoviesCard(props) {
+    const { card } = props;
+
     const [isCardSaved, setIsCardSaved] = useState(false);
     const { pathname } = useLocation();
 
@@ -14,14 +15,23 @@ function MoviesCard() {
     function handleSaveCard() {
         setIsCardSaved(!isCardSaved);
     }
+    
+    function setHours(value) {
+        return Math.floor(value / 60);
+      }
+    
+      function setMinutes(value) {
+        return value % 60;
+      }
+
 
     return (  
         <li className="card">
             <div className="card__description">
-                <h2 className="card__title">33 слова о дизайне 33 слова о дизайне </h2>
-                <p className="card__duration">1ч 47м</p>
+                <h2 className="card__title">{card.nameRU}</h2>
+                <p className="card__duration">{setHours(card.duration)}ч {setMinutes(card.duration)}м</p>
             </div>
-            <img className="сard__poster" src={Film} alt="заставка фильма" />
+            <img className="сard__poster" src={card.image} alt="заставка фильма" />
             { pathname === "/movies" ? (
                 <button
                     className={saveBtnClassName}

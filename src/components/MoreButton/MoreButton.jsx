@@ -1,6 +1,4 @@
 
-import Preloader from "../Preloader/Preloader";
-
 function MoreButton() {
 
     return (
@@ -12,7 +10,6 @@ function MoreButton() {
             >
                 Ещё
             </button>
-            <Preloader/>
         </section>
     );
 }
