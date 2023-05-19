@@ -2,7 +2,7 @@ import React from 'react';
 import MoviesCard from '../../components/MoviesCard/MoviesCard';
 
 function MoviesCardList(props) {
-  const { cards } = props;
+  const { cards, handleFilmSave, savedMovies, handleFilmUnsave } = props;
   return (
     <section className="cards">
       <ul className="cards__list">
@@ -10,6 +10,9 @@ function MoviesCardList(props) {
           <MoviesCard
            card={card} 
            key={card.id || index}
+           savedMovies={savedMovies}
+           handleFilmSave={handleFilmSave}
+           handleFilmUnsave={handleFilmUnsave}
           />
         ))}
       </ul>

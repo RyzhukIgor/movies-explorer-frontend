@@ -4,9 +4,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoreButton from '../MoreButton/MoreButton';
 import { moviesApi } from '../../utils/MoviesApi';
-import { Preloader } from '../../components/Preloader/Preloader';
+import { Preloader } from '../Preloader/Preloader';
 
-function Movies() {
+function Movies(props) {
+  const { handleFilmSave, savedMovies, handleFilmUnsave } = props;
   const windowWidth = document.documentElement.clientWidth;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -159,7 +160,12 @@ function Movies() {
         )) ||
         ((filmsLoaded || queryFilteredFilms.length) && (
           <>
-            <MoviesCardList cards={queryFilteredFilms.slice(0, filmsPerLoad)} />
+            <MoviesCardList 
+            cards={queryFilteredFilms.slice(0, filmsPerLoad)} 
+            handleFilmSave={handleFilmSave}
+            savedMovies={savedMovies}
+            handleFilmUnsave={handleFilmUnsave}
+            />
             {!(filmsPerLoad >= queryFilteredFilms.length) && (
               <MoreButton onClick={handleLoadMoreButtonClick} />
             )}

@@ -20,6 +20,9 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isRegOk, setIsRegOk] = useState(true);
+  const [savedMovies, setSavedMovies] = useState(
+    JSON.parse(localStorage.getItem('searchFilteredFilms')) || []
+  );
   const navigate = useNavigate();
 
   const handleRegister = async ({ name, email, password }) => {
@@ -91,6 +94,38 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  function handleFilmSave(movie, setIsAdded) {
+    mainApi
+      .addMovie(movie)
+      .then((data) => {
+        setSavedMovies([...savedMovies, data]);
+        setIsAdded(true);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      mainApi
+        .getSavedMovie()
+        .then((res) => {
+          setSavedMovies(res);
+          localStorage.setItem('ownSavedMovies', JSON.stringify(res));
+        })
+        .catch((err) => `Error: ${err}`);
+    }
+  }, [isLoggedIn]);
+
+  function handleFilmUnsave(movie, setIsAdded) {
+    mainApi
+      .unsaveMovie(movie._id)
+      .then(() => {
+        setSavedMovies((state) => state.filter((m) => m._id !== movie._id));
+        setIsAdded(false);
+      })
+      .catch((err) => console.log(`Error: ${err}`));
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -112,7 +147,11 @@ function App() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Header isLoggedIn={isLoggedIn} />
-                  <Movies />
+                  <Movies
+                    handleFilmSave={handleFilmSave}
+                    savedMovies={savedMovies}
+                    handleFilmUnsave={handleFilmUnsave}
+                  />
                   <Footer />
                 </ProtectedRoute>
               }
@@ -124,7 +163,9 @@ function App() {
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <>
                     <Header isLoggedIn={isLoggedIn} />
-                    <SavedMovies />
+                    <SavedMovies 
+                    savedMovies={savedMovies}
+                    handleFilmUnsave={handleFilmUnsave} />
                     <Footer />
                   </>
                 </ProtectedRoute>

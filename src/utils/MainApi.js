@@ -55,22 +55,10 @@ class MainApi {
         const res = await fetch(`${this._baseUrl}/movies `, {
             method: "POST",
             headers: {
-                authorization: this._getAuthorization(),
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                country: movie.country,
-                director: movie.director,
-                duration: movie.duration,
-                year: movie.year,
-                description: movie.description,
-                image: `https://api.nomoreparties.co/${movie.image.url}`,
-                trailerLink: movie.trailerLink,
-                thumbnail: `https://api.nomoreparties.co/${movie.image.url}`,
-                movieId: movie.id,
-                nameRU: movie.nameRU,
-                nameEN: movie.nameEN,
-            }),
+            body: JSON.stringify(movie),
         });
         this._checkResponse(res, "Ошибка загрузки фильма на сервер");
         const data = await res.json();
@@ -81,7 +69,7 @@ class MainApi {
         const res = await fetch(`${this._baseUrl}/movies/${movieId} `, {
             method: "DELETE",
             headers: {
-                authorization: this._getAuthorization(),
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 "Content-Type": "application/json",
             },
         });
@@ -91,7 +79,7 @@ class MainApi {
     async getSavedMovie() {
         const res = await fetch(`${this._baseUrl}/movies`, {
             headers: {
-                authorization: this._getAuthorization(),
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 "Content-Type": "application/json",
             },
         });
