@@ -78,6 +78,21 @@ function App() {
           navigate("/");
       }
 
+      const getUserInfo = async () => {
+        try {
+          const userInfo = await mainApi.getUserInfo();
+          setCurrentUser(userInfo);
+        } catch (err) {
+          console.log(err)
+        }
+      }
+
+      useEffect(() => {
+        if (isLoggedIn) {
+          getUserInfo();
+        }
+      }, [isLoggedIn])
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
         <div className="app">
