@@ -18,7 +18,7 @@
 @media screen and (max-width: 480px) {
   .profile__container {
     margin: 0 18px;
-   
+
   }
 }
 
@@ -33,21 +33,21 @@
   color: #FFFFFF;
   margin: 0 auto;
   padding: 54px 0px 123px;
-  
+
 }
 
 
 @media screen and (max-width: 768px) {
   .profile__greeting {
     padding: 233px 0px 95px;
-    
+
   }
 }
 
 @media screen and (max-width: 480px) {
   .profile__greeting {
     padding: 66px 0px 81px;
-    
+
   }
 }
 
@@ -65,12 +65,13 @@
 @media screen and (max-width: 480px) {
   .profile__label {
     max-width: 260px;
+    margin: 0 auto 17px;
   }
 }
 
 .profile__label:last-of-type {
   padding-bottom: 220px;
-  margin: 0;
+  margin: 0 auto;
   border: none;
 }
 
@@ -81,9 +82,9 @@
 }
 
 @media screen and (max-width: 480px) {
-  .profile__label:last-of-type{
+  .profile__label:last-of-type {
     padding-bottom: 380px;
-    
+
   }
 }
 
@@ -148,4 +149,17 @@
 
 .profile__button:last-of-type {
   margin: 0 0 50px 0;
+}
+
+
+.profile__nav {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__form {
+  width: 100%;
+  margin: 0 auto;
 }

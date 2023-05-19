@@ -10,18 +10,6 @@ class MainApi {
         }
     }
 
-    async checkAuth( token )  {
-        const res = await fetch(`${this._baseUrl}/users/me`, {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            }
-        })
-        return this._checkResponse(res);
-    }
-
-
     async register({ name, email, password }) {
         const res = await fetch(`${this._baseUrl}/signup`, {
             method: "POST",
@@ -37,22 +25,10 @@ class MainApi {
         return data;
     }
 
-    async login({ email, password }) {
-        const res = await fetch(`${this._baseUrl}/signin`, {
-            method: "POST",
-            headers: this._headers,
-            body: JSON.stringify({"email": `${email}`,
-            "password": `${password}`}),
-        });
-        this._checkResponse(res, "Ошибка авторизации пользователя");
-        const data = await res.json();
-        return data;
-    }
-
     async getUserInfo() {
         const res = await fetch(`${this._baseUrl}/users/me`, {
             headers: {
-                authorization: this._getAuthorization(),
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 "Content-Type": "application/json",
             },
         });
@@ -61,17 +37,14 @@ class MainApi {
         return data;
     }
 
-    async updateUserInfo(userInfo) {
+    async updateInfo({ name, email, password}) {
         const res = await fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: {
-                authorization: this._getAuthorization(),
+                authorization: `Bearer ${localStorage.getItem('jwt')}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                name: userInfo.name,
-                email: userInfo.email,
-            }),
+            body: JSON.stringify({ name: name, email: email, password: password,}),
         });
         this._checkResponse(res, "Ошибка ввода данных");
         const data = await res.json();

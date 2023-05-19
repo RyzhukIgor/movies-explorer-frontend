@@ -61,6 +61,16 @@ function App() {
             .catch((err) => console.log(err));
         }
       }, [])
+
+      const handleUpdateData = async ({ name, email }) => {
+        try {
+          const updatedData = await mainApi.updateInfo({ name, email });
+          setCurrentUser(updatedData);
+          console.log('?')
+        } catch (err) {
+          console.log(err)
+        }
+      }
    
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -102,14 +112,11 @@ function App() {
                         }
                     />
                     <Route
-                        path="/Profile"
-                        isLoggedIn={isLoggedIn} 
+                        path="/profile"
                         element={
-                            <ProtectedRoute>
-                            <>
+                            <ProtectedRoute isLoggedIn={isLoggedIn}>
                                 <Header isLoggedIn={isLoggedIn} />
-                                <Profile />
-                            </>
+                                <Profile onUpdateData={handleUpdateData}/>
                             </ProtectedRoute>
                         }
                     />
