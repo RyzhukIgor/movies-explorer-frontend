@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useFormWithValidation } from "../../hooks/useForm";
+import { Link } from "react-router-dom";
 
-function Profile(props) {
-    const { onUpdateData } = props;
+function Profile({ onUpdateData, onSignOut }) {
+    
     const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
     const currentUser = useContext(CurrentUserContext);
     const [isUpdatedData, setIsUpdatedData] = useState(false);
+
+    
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,6 +28,8 @@ function Profile(props) {
     useEffect(() => {
         resetForm({name: currentUser.name, email: currentUser.email}, {}, false)
     }, [currentUser, resetForm])
+
+
 
     return (
         <section className="profile">
@@ -62,18 +67,16 @@ function Profile(props) {
                 <button className="profile__button" type="submit" disabled={!isUpdatedData || !isValid}>
                     Редактировать
                 </button>
-                <button
+                <Link
                     className="profile__button profile__button_red"
-                    type="button"
+                    to=""
                     disabled={!isUpdatedData || !isValid}
-
+                    onClick={onSignOut}
                 >
                     Выйти из аккаунта
-                </button>
+                </Link>
                 </nav>
-
                 </form>
-
             </div>
         </section>
     );

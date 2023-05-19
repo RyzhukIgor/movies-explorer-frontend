@@ -66,12 +66,18 @@ function App() {
         try {
           const updatedData = await mainApi.updateInfo({ name, email });
           setCurrentUser(updatedData);
-          console.log('?')
         } catch (err) {
           console.log(err)
         }
       }
-   
+
+      const handleSignOut = () => {      
+          localStorage.removeItem('jwt');
+          setCurrentUser(null)
+          setIsLoggedIn(false);
+          navigate("/");
+      }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
         <div className="app">
@@ -116,7 +122,7 @@ function App() {
                         element={
                             <ProtectedRoute isLoggedIn={isLoggedIn}>
                                 <Header isLoggedIn={isLoggedIn} />
-                                <Profile onUpdateData={handleUpdateData}/>
+                                <Profile onUpdateData={handleUpdateData} onSignOut={handleSignOut}/>
                             </ProtectedRoute>
                         }
                     />
