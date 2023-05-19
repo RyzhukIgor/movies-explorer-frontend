@@ -118,7 +118,7 @@ function App() {
 
   function handleFilmUnsave(movie, setIsAdded) {
     mainApi
-      .unsaveMovie(movie._id)
+      .deleteMovie(movie._id)
       .then(() => {
         setSavedMovies((state) => state.filter((m) => m._id !== movie._id));
         setIsAdded(false);
