@@ -12,6 +12,12 @@
     border-bottom: 1px solid #DADADA;
 }
 
+@media screen and (min-width: 1281px) {
+    .about-project__title {
+        margin: 0px auto;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .about-project__title {
         max-width: 668px;
@@ -30,6 +36,13 @@
 .about-project {
     max-width: 1280px;
     margin: 0 70px;
+}
+
+
+@media screen and (min-width: 1281px) {
+    .about-project {
+        margin: 0px auto;
+    }
 }
 
 @media screen and (max-width: 768px) {
