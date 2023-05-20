@@ -22,7 +22,7 @@
 }
 
 .сard__poster {
-    object-fit:cover;
+    object-fit: cover;
     display: block;
     width: 100%;
     padding-top: 11px;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .сard__poster{
+    .сard__poster {
         height: 168px;
     }
 }
@@ -58,28 +58,28 @@
 
 
 @media screen and (min-width: 481px) {
-    .card__title{
+    .card__title {
         font-size: 12px;
         max-width: 155px;
     }
 }
 
 @media screen and (min-width: 688px) {
-    .card__title{
+    .card__title {
         font-size: 15px;
         max-width: 210px;
     }
 }
 
 @media screen and (min-width: 769px) {
-    .card__title{
+    .card__title {
         font-size: 12px;
         max-width: 150px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .card__title{
+    .card__title {
         font-size: 15px;
         line-height: 18px;
         max-width: 210px;
@@ -130,7 +130,7 @@
 
 
 @media screen and (max-width: 480px) {
-    .card__btn{
+    .card__btn {
         top: 18px;
         right: 10px;
     }

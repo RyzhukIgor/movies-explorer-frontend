@@ -163,9 +163,10 @@ function App() {
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <>
                     <Header isLoggedIn={isLoggedIn} />
-                    <SavedMovies 
-                    savedMovies={savedMovies}
-                    handleFilmUnsave={handleFilmUnsave} />
+                    <SavedMovies
+                      savedMovies={savedMovies}
+                      handleFilmUnsave={handleFilmUnsave}
+                    />
                     <Footer />
                   </>
                 </ProtectedRoute>

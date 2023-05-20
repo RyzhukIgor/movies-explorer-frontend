@@ -8,11 +8,11 @@ function MoviesCardList(props) {
       <ul className="cards__list">
         {cards.map((card, index) => (
           <MoviesCard
-           card={card} 
-           key={card.id || index}
-           savedMovies={savedMovies}
-           handleFilmSave={handleFilmSave}
-           handleFilmUnsave={handleFilmUnsave}
+            card={card}
+            key={card.id || index}
+            savedMovies={savedMovies}
+            handleFilmSave={handleFilmSave}
+            handleFilmUnsave={handleFilmUnsave}
           />
         ))}
       </ul>
