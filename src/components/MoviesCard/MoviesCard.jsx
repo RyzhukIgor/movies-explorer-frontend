@@ -61,7 +61,9 @@ function MoviesCard(props) {
           {setHours(card.duration)}ч {setMinutes(card.duration)}м
         </p>
       </div>
-      <img className="сard__poster" src={card.image} alt="заставка фильма" />
+      <a href={card.trailerLink} target="_blank" rel="noreferrer">
+        <img className="сard__poster" src={card.image} alt="заставка фильма" />
+      </a>  
       {pathname === '/movies' ? (
         <button
           className={saveBtnClassName}
