@@ -1,2 +1,3 @@
 # [ссылка на макет](https://disk.yandex.ru/d/0p_omNXRKRNwLA)
+# [ссылка на pull requests](https://github.com/RyzhukIgor/movies-explorer-frontend/pull/2)
 
