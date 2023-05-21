@@ -1,36 +1,43 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import { useFormWithValidation } from '../../hooks/useForm';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useUserStore } from "../../contexts/CurrentUserContext";
+import { useFormWithValidation } from "../../hooks/useForm";
+import { Link } from "react-router-dom";
+import mainApi from "../../utils/MainApi";
 
-function Profile({ onUpdateData, onSignOut }) {
+function Profile() {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
-  const currentUser = useContext(CurrentUserContext);
+  const { user, logout, setUser } = useUserStore();
   const [isUpdatedData, setIsUpdatedData] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onUpdateData({
-      name: values.name || currentUser.name,
-      email: values.email || currentUser.email,
-    });
+
+    try {
+      const updatedData = await mainApi.updateInfo({
+        name: values.name || user.name,
+        email: values.email || user.email,
+      });
+      setUser(updatedData);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
-    values.name !== currentUser.name || values.email !== currentUser.email
+    values.name !== user.name || values.email !== user.email
       ? setIsUpdatedData(true)
       : setIsUpdatedData(false);
-  }, [values.name, currentUser.name, values.email, currentUser.email]);
+  }, [values.name, user.name, values.email, user.email]);
 
   useEffect(() => {
-    resetForm({ name: currentUser.name, email: currentUser.email }, {}, false);
-  }, [currentUser, resetForm]);
+    resetForm({ name: user.name, email: user.email }, {}, false);
+  }, [user, resetForm]);
 
   return (
     <section className="profile">
       <div className="profile__container">
-        <h2 className="profile__greeting">Привет, {currentUser.name}!</h2>
+        <h2 className="profile__greeting">Привет, {user.name}!</h2>
         <form onSubmit={handleSubmit} noValidate className="profile__form">
           <label className="profile__label" htmlFor="username">
             <span className="profile__label-span">Имя</span>
@@ -39,7 +46,7 @@ function Profile({ onUpdateData, onSignOut }) {
               type="text"
               id="name"
               name="name"
-              value={values.name || ''}
+              value={values.name || ""}
               onChange={handleChange}
               error={errors.name}
               placeholder="Введите имя"
@@ -54,7 +61,7 @@ function Profile({ onUpdateData, onSignOut }) {
               name="email"
               required
               placeholder="Введите email"
-              value={values.email || ''}
+              value={values.email || ""}
               onChange={handleChange}
               error={errors.email}
             />
@@ -71,7 +78,7 @@ function Profile({ onUpdateData, onSignOut }) {
               className="profile__button profile__button_red"
               to=""
               disabled={!isUpdatedData || !isValid}
-              onClick={onSignOut}
+              onClick={logout}
             >
               Выйти из аккаунта
             </Link>

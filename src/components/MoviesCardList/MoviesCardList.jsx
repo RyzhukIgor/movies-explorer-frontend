@@ -1,8 +1,8 @@
-import React from 'react';
-import MoviesCard from '../../components/MoviesCard/MoviesCard';
+import React from "react";
+import MoviesCard from "../../components/MoviesCard/MoviesCard";
 
 function MoviesCardList(props) {
-  const { cards, handleFilmSave, savedMovies, handleFilmUnsave } = props;
+  const { cards, onSave, savedMovies, onDelete } = props;
   return (
     <section className="cards">
       <ul className="cards__list">
@@ -11,8 +11,8 @@ function MoviesCardList(props) {
             card={card}
             key={card.id || index}
             savedMovies={savedMovies}
-            handleFilmSave={handleFilmSave}
-            handleFilmUnsave={handleFilmUnsave}
+            onSave={onSave}
+            onDelete={onDelete}
           />
         ))}
       </ul>

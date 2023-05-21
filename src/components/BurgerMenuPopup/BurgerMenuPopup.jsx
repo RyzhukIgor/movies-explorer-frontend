@@ -1,13 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function BurgerMenuPopup(props) {
   const { isOpen, isClose } = props;
 
   return (
     <section
-      className={`burger-popup ${isOpen ? 'burger-popup_active' : 'null'}`}
+      className={`burger-popup ${isOpen ? "burger-popup_active" : "null"}`}
     >
       <div className="burger-popup__menu">
         <button className="burger-popup__btn" onClick={isClose} />

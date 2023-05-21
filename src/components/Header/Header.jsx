@@ -1,13 +1,16 @@
-import Logo from '../Logo/Logo';
-import AccountIcon from '../../images/account-icon.svg';
-import { NavLink } from 'react-router-dom';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
+import Logo from "../Logo/Logo";
+import AccountIcon from "../../images/account-icon.svg";
+import { NavLink } from "react-router-dom";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
+import { useUserStore } from "../../contexts/CurrentUserContext";
 
-function Header({ isLoggedIn }) {
+function Header() {
+  const { user } = useUserStore();
+
   return (
     <header className="header">
       <Logo />
-      {!isLoggedIn ? (
+      {!user ? (
         <nav className="header__buttons">
           <NavLink className="header__btn-signup" to="/signup">
             Регистрация

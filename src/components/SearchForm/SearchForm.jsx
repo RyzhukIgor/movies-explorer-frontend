@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 
 function SearchForm(props) {
   const { query, shortsToggleSwitch, onInputChange, onToggleChange, onSubmit } =
@@ -23,23 +23,21 @@ function SearchForm(props) {
           placeholder="Фильм"
           required="required"
           onChange={onInputChange}
-          value={query || ''}
+          value={query || ""}
           autoFocus
         />
         <button type="submit" className="search__button">
           Поиск
         </button>
       </form>
-      <div
-        className="search__checkbox-container"
-        onChange={onToggleChange}
-        shortsToggleSwitch={shortsToggleSwitch}
-      >
+      <div className="search__checkbox-container">
         <label className="search__checkbox" checked>
           <input
             type="checkbox"
             className="search__input-checkbox"
             id="checkbox"
+            onChange={onToggleChange}
+            checked={shortsToggleSwitch}
           />
           <span className="search__slider"></span>
         </label>

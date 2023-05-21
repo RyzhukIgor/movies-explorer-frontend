@@ -1,145 +1,133 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoreButton from '../MoreButton/MoreButton';
-import { moviesApi } from '../../utils/MoviesApi';
-import { Preloader } from '../Preloader/Preloader';
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import MoreButton from "../MoreButton/MoreButton";
+import { moviesApi } from "../../utils/MoviesApi";
+import { Preloader } from "../Preloader/Preloader";
+import mainApi from "../../utils/MainApi";
 
-function Movies(props) {
-  const { handleFilmSave, savedMovies, handleFilmUnsave } = props;
-  const windowWidth = document.documentElement.clientWidth;
-
+function Movies() {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(false);
   const [queryValue, setQueryValue] = useState(
-    localStorage.getItem('queryValue') || ''
+    localStorage.getItem("queryValue") || ""
   );
+  const [filterValue, setFilterValue] = useState(queryValue);
   const [allFilms, setAllFilms] = useState([]);
-  const [queryFilteredFilms, setQueryFilteredFilms] = useState(
-    JSON.parse(localStorage.getItem('queryFilteredFilms')) || []
-  );
+  const [savedFilms, setSavedFilms] = useState([]);
   const [shortsToggleSwitch, setShortsToggleSwitch] = useState(
-    JSON.parse(localStorage.getItem('shortsToggleSwitch')) || false
+    JSON.parse(localStorage.getItem("shortsToggleSwitch")) || false
   );
   const [resultError, setResultError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [filmsLoaded, setFilmsLoaded] = useState(false);
-  const [filmsPerLoad, setFilmsPerLoad] = useState(0);
-
-  function handleFilmsPerRowLoaded() {
-    setTimeout(() => {
-      if (windowWidth >= 1088) {
-        setFilmsPerLoad(12);
-      } else if (windowWidth >= 684) {
-        setFilmsPerLoad(8);
-      } else {
-        setFilmsPerLoad(5);
-      }
-    }, 1000);
-  }
+  const [errorMessage, setErrorMessage] = useState("");
+  const [filmsCount, setFilmsCount] = useState(() => {
+    return screenWidth >= 1088 ? 12 : screenWidth >= 684 ? 8 : 5;
+  });
 
   function handleLoadMoreButtonClick() {
-    setTimeout(() => {
-      if (windowWidth >= 1088) {
-        setFilmsPerLoad(filmsPerLoad + 3);
-      } else {
-        setFilmsPerLoad(filmsPerLoad + 2);
-      }
-    }, 1000);
+    if (screenWidth >= 1088) {
+      setFilmsCount((prev) => prev + 3);
+    } else {
+      setFilmsCount((prev) => prev + 2);
+    }
   }
 
+  const handleResize = useCallback(() => {
+    setScreenWidth(window.innerWidth);
+  }, []);
+
   useEffect(() => {
-    window.addEventListener('resize', handleFilmsPerRowLoaded(windowWidth));
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener(
-        'resize',
-        handleFilmsPerRowLoaded(windowWidth)
-      );
+      window.removeEventListener("resize", handleResize);
     };
-  }, [windowWidth]);
+  }, []);
+
+  const fetchAllFilms = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const films = await moviesApi.getInitialsMovies();
+
+      setAllFilms(
+        films.map((film) => ({
+          ...film,
+          image: `https://api.nomoreparties.co${film.image.url}`,
+          thumbnail: `https://api.nomoreparties.co${film.image.formats.thumbnail.url}`,
+        }))
+      );
+    } catch (error) {
+      console.log(`Ошибка: ${error}.`);
+      setResultError(true);
+      setErrorMessage(
+        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  const fetchSavedFilms = useCallback(async () => {
+    const res = await mainApi.getSavedMovie();
+
+    setSavedFilms(res);
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem(
-      'queryFilteredFilms',
-      JSON.stringify(queryFilteredFilms)
-    );
-  }, [queryFilteredFilms]);
+    fetchAllFilms();
+    fetchSavedFilms();
+  }, []);
 
-  function handleSearchFormInput(event) {
-    setQueryValue(event.target.value);
-  }
+  useEffect(() => {
+    localStorage.setItem("shortsToggleSwitch", shortsToggleSwitch.toString());
+  }, [shortsToggleSwitch]);
 
   function handleShortsToggleSwitchState() {
     setShortsToggleSwitch(!shortsToggleSwitch);
   }
 
-  function filterByDuration(films) {
-    return films.filter((film) => Number(film.duration) <= 40);
+  const handleFilmSave = useCallback((film) => {
+    setSavedFilms((prev) => [...prev, film]);
+  }, []);
+
+  const handleFilmDelete = useCallback((film) => {
+    setSavedFilms((prev) => prev.filter((f) => f._id !== film._id));
+  }, []);
+
+  const filteredFilms = useMemo(() => {
+    const filtered = allFilms.filter((film) => {
+      if (shortsToggleSwitch && film.duration > 40) {
+        return false;
+      }
+
+      const normalizedSearch = filterValue.toLowerCase();
+      const normalizedNameRu = film.nameRU.toLowerCase();
+      const normalizedNameEn = film.nameEN.toLowerCase();
+
+      return (
+        normalizedNameRu.includes(normalizedSearch) ||
+        normalizedNameEn.includes(normalizedSearch)
+      );
+    });
+
+    return filtered;
+  }, [allFilms, shortsToggleSwitch, filterValue]);
+
+  const filmsToRender = useMemo(() => {
+    return filteredFilms.slice(0, filmsCount).map((film) => ({
+      ...film,
+      savedMovieId: savedFilms.find((f) => f.movieId === film.id)?._id,
+    }));
+  }, [filteredFilms, filmsCount, savedFilms]);
+
+  function handleSearch(search) {
+    setFilterValue(search);
   }
 
-  function filterByQuery(films, queryValue) {
-    return films.filter(
-      (film) =>
-        film.nameRU.toLowerCase().includes(queryValue.toLowerCase()) ||
-        film.nameEN.toLowerCase().includes(queryValue.toLowerCase())
-    );
-  }
-
-  function handleSearch() {
-    setResultError(false);
-    setErrorMessage('');
-    setFilmsLoaded(false);
-    setIsLoading(true);
-
-    moviesApi
-      .getInitialsMovies()
-      .then((movieList) =>
-        movieList.map((movie) => ({
-          country: movie.country,
-          id: movie.id,
-          nameRU: movie.nameRU,
-          nameEN: movie.nameEN,
-          duration: movie.duration,
-          image: `https://api.nomoreparties.co${movie.image.url}`,
-          thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
-          director: movie.director,
-          year: movie.year,
-          description: movie.description,
-          trailerLink: movie.trailerLink,
-        }))
-      )
-      .then((res) => {
-        localStorage.setItem('shortsToggleSwitch', shortsToggleSwitch);
-        localStorage.setItem('queryValue', queryValue);
-
-        if (!queryValue) {
-          setResultError(true);
-          setErrorMessage('Нужно ввести ключевое слово');
-          return;
-        }
-
-        setFilmsLoaded(true);
-        shortsToggleSwitch
-          ? setAllFilms(filterByDuration(res))
-          : setAllFilms(res);
-        setQueryFilteredFilms(filterByQuery(allFilms, queryValue));
-
-        if (!queryFilteredFilms.length) {
-          setResultError(true);
-          setErrorMessage('Ничего не найдено');
-          return;
-        }
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}.`);
-        setResultError(true);
-        setErrorMessage(
-          'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
-        );
-      })
-      .finally(setIsLoading(false));
-  }
+  const handleSearchFormInput = useCallback((event) => {
+    setQueryValue(event.target.value);
+  }, []);
 
   return (
     <>
@@ -158,15 +146,15 @@ function Movies(props) {
             <span className="movies__message-none">{errorMessage}</span>
           </p>
         )) ||
-        ((filmsLoaded || queryFilteredFilms.length) && (
+        (filterValue && filmsToRender.length && (
           <>
             <MoviesCardList
-              cards={queryFilteredFilms.slice(0, filmsPerLoad)}
-              handleFilmSave={handleFilmSave}
-              savedMovies={savedMovies}
-              handleFilmUnsave={handleFilmUnsave}
+              cards={filmsToRender}
+              onSave={handleFilmSave}
+              savedMovies={savedFilms}
+              onDelete={handleFilmDelete}
             />
-            {!(filmsPerLoad >= queryFilteredFilms.length) && (
+            {filteredFilms.length > filmsCount && (
               <MoreButton moreButtonClick={handleLoadMoreButtonClick} />
             )}
           </>

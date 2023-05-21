@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import SearchForm from '../SearchForm/SearchForm';
-import { Preloader } from '../Preloader/Preloader';
-import mainApi from '../../utils/MainApi';
+import React, { useState, useEffect, useCallback, useMemo } from "react";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
+import { Preloader } from "../Preloader/Preloader";
+import mainApi from "../../utils/MainApi";
 
-function SavedMovies(props) {
-  const { savedMovies, handleFilmUnsave } = props;
-
+function SavedMovies() {
   const [isLoading, setIsLoading] = useState(false);
-  const [queryValue, setQueryValue] = useState('');
-
+  const [queryValue, setQueryValue] = useState("");
+  const [filterValue, setFilterValue] = useState(queryValue);
   const [allSavedFilms, setAllSavedFilms] = useState([]);
-  const [savedFilmsFiltered, setSavedFilmsFiltered] = useState([]);
   const [shortsToggleSwitch, setShortsToggleSwitch] = useState(false);
   const [resultError, setResultError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [filmsLoaded, setFilmsLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleSearchFormInput(event) {
     setQueryValue(event.target.value);
@@ -25,66 +21,54 @@ function SavedMovies(props) {
     setShortsToggleSwitch(!shortsToggleSwitch);
   }
 
-  function filterByDuration(films) {
-    return films.filter((film) => Number(film.duration) <= 40);
-  }
+  const fetchSavedFilms = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const films = await mainApi.getSavedMovie();
 
-  function filterByQuery(films, queryValue) {
-    return films.filter(
-      (film) =>
-        film.nameRU.toLowerCase().includes(queryValue.toLowerCase()) ||
-        film.nameEN.toLowerCase().includes(queryValue.toLowerCase())
-    );
-  }
+      setAllSavedFilms(
+        films.map((film) => ({ ...film, savedMovieId: film._id }))
+      );
+    } catch (error) {
+      console.log(`Ошибка: ${error}.`);
+      setResultError(true);
+      setErrorMessage(
+        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    setSavedFilmsFiltered(savedMovies);
-  }, [savedMovies]);
+    fetchSavedFilms();
+  }, []);
 
-  function handleSearch() {
-    setResultError(false);
-    setErrorMessage('');
-    setFilmsLoaded(false);
-    setIsLoading(true);
-    mainApi
-      .getSavedMovies()
-      .then((filmsArr) =>
-        filmsArr.map((film) => ({
-          country: film.country,
-          movieId: film.movieId,
-          nameRU: film.nameRU,
-          nameEN: film.nameEN,
-          duration: film.duration,
-          image: film.image,
-          thumbnail: film.thumbnail,
-          director: film.director,
-          year: film.year,
-          description: film.description,
-          trailerLink: film.trailerLink,
-          _id: film._id,
-        }))
-      )
-      .then((res) => {
-        shortsToggleSwitch
-          ? setAllSavedFilms(filterByDuration(res))
-          : setAllSavedFilms(res);
-        setSavedFilmsFiltered(filterByQuery(allSavedFilms, queryValue));
+  const filteredFilms = useMemo(() => {
+    const filtered = allSavedFilms.filter((film) => {
+      if (shortsToggleSwitch && film.duration > 40) {
+        return false;
+      }
 
-        if (!savedFilmsFiltered.length) {
-          setResultError(true);
-          setErrorMessage('Ничего не найдено');
-        } else {
-          setFilmsLoaded(true);
-        }
-      })
-      .catch((err) => {
-        console.log(`Ошибка: ${err}.`);
-        setResultError(true);
-        setErrorMessage(
-          'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
-        );
-      })
-      .finally(setIsLoading(false));
+      const normalizedSearch = filterValue.toLowerCase();
+      const normalizedNameRu = film.nameRU.toLowerCase();
+      const normalizedNameEn = film.nameEN.toLowerCase();
+
+      return (
+        normalizedNameRu.includes(normalizedSearch) ||
+        normalizedNameEn.includes(normalizedSearch)
+      );
+    });
+
+    return filtered;
+  }, [allSavedFilms, shortsToggleSwitch, filterValue]);
+
+  const handleFilmDelete = useCallback((film) => {
+    setAllSavedFilms((prev) => prev.filter((f) => f._id !== film._id));
+  }, []);
+
+  function handleSearch(search) {
+    setFilterValue(search);
   }
 
   return (
@@ -104,12 +88,12 @@ function SavedMovies(props) {
             <span className="movies__message-none">{errorMessage}</span>
           </p>
         )) ||
-        ((filmsLoaded || savedFilmsFiltered.length) && (
+        (filteredFilms.length && (
           <>
             <MoviesCardList
-              cards={savedFilmsFiltered}
-              savedMovies={savedMovies}
-              handleFilmUnsave={handleFilmUnsave}
+              cards={filteredFilms}
+              savedMovies={filteredFilms}
+              onDelete={handleFilmDelete}
             />
           </>
         )) ||

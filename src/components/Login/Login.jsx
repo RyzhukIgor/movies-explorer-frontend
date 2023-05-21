@@ -1,24 +1,36 @@
-import React, { useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
-import Logo from '../Logo/Logo';
-import { useFormWithValidation } from '../../hooks/useForm';
+import React, { useCallback } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import Logo from "../Logo/Logo";
+import { useFormWithValidation } from "../../hooks/useForm";
+import { checkAuth, login } from "../../utils/auth";
+import { useUserStore } from "../../contexts/CurrentUserContext";
 
-function Login(props) {
-  const { onSubmit } = props;
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation();
+function Login() {
+  const { values, handleChange, errors, isValid } = useFormWithValidation({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const { setUser } = useUserStore();
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
+      const { email, password } = values;
 
-      onSubmit({
-        email: values.email,
-        password: values.password,
-      });
+      try {
+        const { token } = await login({ email, password });
+        localStorage.setItem("jwt", token);
+        const userData = await checkAuth(token);
+        setUser(userData);
+        navigate("/movies");
+      } catch (err) {
+        console.log(err);
+      }
     },
-    [values, onSubmit]
+    [values, navigate, setUser]
   );
+
   return (
     <section className="login">
       <div className="login__greeting">
@@ -37,11 +49,11 @@ function Login(props) {
             name="email"
             required
             placeholder="Введите email"
-            value={values['email']}
+            value={values["email"]}
             onChange={handleChange}
           />
-          {errors['email'] && (
-            <span className="login__error">{errors['email']}</span>
+          {errors["email"] && (
+            <span className="login__error">{errors["email"]}</span>
           )}
           <label className="login__label" htmlFor="password">
             Пароль
@@ -53,11 +65,11 @@ function Login(props) {
             name="password"
             required
             placeholder="Введите пароль"
-            value={values['password']}
+            value={values["password"]}
             onChange={handleChange}
           />
-          {errors['password'] && (
-            <span className="login__error">{errors['password']}</span>
+          {errors["password"] && (
+            <span className="login__error">{errors["password"]}</span>
           )}
           <span className="login__input-error">Что-то пошло не так... </span>
           <button className="login__submit" type="submit" disabled={!isValid}>

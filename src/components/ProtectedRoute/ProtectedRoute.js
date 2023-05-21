@@ -1,8 +1,11 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { useUserStore } from "../../contexts/CurrentUserContext";
 
 const ProtectedRoute = (props) => {
-  return props.isLoggedIn ? props.children : <Navigate to="/signin" replace />;
+  const { user } = useUserStore();
+
+  return user ? props.children : <Navigate to="/signin" replace />;
 };
 
 export default ProtectedRoute;

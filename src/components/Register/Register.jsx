@@ -1,16 +1,32 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Logo from '../Logo/Logo';
-import { useFormWithValidation } from '../../hooks/useForm';
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import Logo from "../Logo/Logo";
+import { useFormWithValidation } from "../../hooks/useForm";
+import { useUserStore } from "../../contexts/CurrentUserContext";
+import mainApi from "../../utils/MainApi";
 
-function Register({ handleRegister, isRegOk }) {
-  const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation({ name: '', email: '', password: '' });
+function Register() {
+  const { values, handleChange, errors, isValid } = useFormWithValidation({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isRegOk, setIsRegOk] = useState(true);
+  const { setUser } = useUserStore();
+  const navigate = useNavigate();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    const { name, email, password } = values;
-    handleRegister({ name, email, password });
+
+    try {
+      const { name, email, password } = values;
+      const userData = await mainApi.register({ name, email, password });
+      setIsRegOk(true);
+      setUser(userData);
+      navigate("/signin");
+    } catch (err) {
+      setIsRegOk(false);
+    }
   };
 
   return (
@@ -29,13 +45,13 @@ function Register({ handleRegister, isRegOk }) {
             type="text"
             id="username"
             name="name"
-            value={values['name']}
+            value={values["name"]}
             onChange={handleChange}
             required
             placeholder="Введите имя"
           />
-          {errors['name'] && (
-            <span className="form__error">{errors['name']}</span>
+          {errors["name"] && (
+            <span className="form__error">{errors["name"]}</span>
           )}
           <label className="form__label" htmlFor="email">
             E-mail
@@ -45,13 +61,13 @@ function Register({ handleRegister, isRegOk }) {
             type="email"
             id="email"
             name="email"
-            value={values['email']}
+            value={values["email"]}
             onChange={handleChange}
             required
             placeholder="Введите email"
           />
-          {errors['email'] && (
-            <span className="form__error">{errors['email']}</span>
+          {errors["email"] && (
+            <span className="form__error">{errors["email"]}</span>
           )}
           <label className="form__label" htmlFor="password">
             Пароль
@@ -62,19 +78,19 @@ function Register({ handleRegister, isRegOk }) {
             id="password"
             name="password"
             required
-            value={values['password']}
+            value={values["password"]}
             onChange={handleChange}
             placeholder="Введите пароль"
           />
-          {errors['password'] && (
-            <span className="form__error">{errors['password']}</span>
+          {errors["password"] && (
+            <span className="form__error">{errors["password"]}</span>
           )}
           <span
             className={`form__input-error ${
-              isRegOk ? 'form__error_invisible' : 'form__error_visible'
+              isRegOk ? "form__error_invisible" : "form__error_visible"
             }`}
           >
-            Что-то пошло не так...{' '}
+            Что-то пошло не так...{" "}
           </span>
           <button className="form__submit" type="submit" disabled={!isValid}>
             Зарегистрироваться
