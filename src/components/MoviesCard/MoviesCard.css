@@ -1,0 +1,153 @@
+.card {
+    background: #222222;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+    position: relative;
+    max-width: 364px;
+    max-height: 271px;
+    display: block;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        max-width: 339px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        max-width: 300px;
+        max-height: 236px;
+    }
+}
+
+.сard__poster {
+    object-fit: cover;
+    display: block;
+    width: 100%;
+    padding-top: 11px;
+}
+
+@media screen and (max-width: 480px) {
+    .сard__poster{
+        height: 168px;
+    }
+}
+
+.card__description {
+    display: block;
+    max-height: 68px;
+}
+
+.card__title {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 14px 0 10px 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 210px;
+    box-sizing: border-box;
+}
+
+
+@media screen and (min-width: 481px) {
+    .card__title{
+        font-size: 12px;
+        max-width: 155px;
+    }
+}
+
+@media screen and (min-width: 688px) {
+    .card__title{
+        font-size: 15px;
+        max-width: 210px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .card__title{
+        font-size: 12px;
+        max-width: 150px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .card__title{
+        font-size: 15px;
+        line-height: 18px;
+        max-width: 210px;
+    }
+}
+
+.card__duration {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+    display: flex;
+    align-items: center;
+    color: #8B8B8B;
+    margin: 0;
+    padding: 0 0 0px 14px;
+}
+
+.card__btn {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/flag.svg) no-repeat center;
+    background-color: #313131;
+    border: none;
+    cursor: pointer;
+}
+
+.card__btn:hover {
+    opacity: 0.8;
+}
+
+.card__btn-active {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/flag-cover.svg) no-repeat center;
+    background-color: #3DDC84;
+    border: none;
+}
+
+
+@media screen and (max-width: 480px) {
+    .card__btn{
+        top: 18px;
+        right: 10px;
+    }
+}
+
+.card__btn-active:hover {
+    opacity: 0.7;
+}
+
+.card__btn-delete {
+    position: absolute;
+    top: 19px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 36px;
+    background: url(../../images/icon-delete-btn.svg) no-repeat center;
+    background-color: #313131;
+    border: none;
+    cursor: pointer;
+}

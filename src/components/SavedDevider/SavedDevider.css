@@ -1,0 +1,13 @@
+.saved-devider {
+    max-width: 1280px;
+    display: block;
+    margin: 0 auto;
+    min-height: 140px;
+    background: #202020;
+}
+
+@media screen and (max-width: 480px) {
+    .saved-devider {
+        min-height: 200px;
+    }
+}
