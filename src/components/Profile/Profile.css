@@ -133,6 +133,20 @@
   cursor: pointer;
 }
 
+.profile__button:disabled {
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font-weight: 400;
+  color: #555555;
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
   .profile__button {
     font-size: 12px;

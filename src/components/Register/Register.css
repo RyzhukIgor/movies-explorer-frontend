@@ -98,9 +98,27 @@
     padding-top: 10px;
 }
 
-.form__submit {
+.form__submit{
     width: 100%;
     background: #4285F4;
+    border-radius: 3px;
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 13px 0px 15px;
+    margin: 69px auto 0;
+    cursor: pointer;
+}
+
+.form__submit:disabled {
+    width: 100%;
+    background: #828791;
     border-radius: 3px;
     border: none;
     box-sizing: border-box;

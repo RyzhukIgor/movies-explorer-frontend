@@ -114,6 +114,22 @@
     cursor: pointer;
 }
 
+.login__submit:disabled {
+    width: 100%;
+    background: #b6b6b6;
+    border-radius: 3px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 13px 0px 15px;
+    margin: 135px auto 0;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 480px) {
     .login__submit {
         margin-top: 225px;
