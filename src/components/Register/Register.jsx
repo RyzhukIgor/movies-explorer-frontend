@@ -23,7 +23,7 @@ function Register() {
       const userData = await mainApi.register({ name, email, password });
       setIsRegOk(true);
       setUser(userData);
-      navigate("/signin");
+      navigate("/movies");
     } catch (err) {
       setIsRegOk(false);
     }
