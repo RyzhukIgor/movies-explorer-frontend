@@ -40,7 +40,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
-    navigate("/");
+    navigate("/signup");
   };
 
   if (!appInited) {
