@@ -5,7 +5,7 @@ import { useUserStore } from "../../contexts/CurrentUserContext";
 const ProtectedRoute = (props) => {
   const { user } = useUserStore();
 
-  return user ? props.children : <Navigate to="/signin" replace />;
+  return user ? props.children : <Navigate to="/" replace />;
 };
 
 export default ProtectedRoute;
