@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { useFormWithValidation } from '../../hooks/useForm';
 import { useUserStore } from '../../contexts/CurrentUserContext';
@@ -13,7 +13,7 @@ function Register() {
     password: '',
   });
   const [isRegOk, setIsRegOk] = useState(true);
-  const { setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
   const navigate = useNavigate();
 
   const handleSubmit = async (evt) => {
@@ -29,6 +29,10 @@ function Register() {
       setIsRegOk(false);
     }
   };
+
+  if (user) {
+    return <Navigate path="/" />
+  }
 
   return (
     <section className="form">
