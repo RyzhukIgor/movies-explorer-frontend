@@ -51,6 +51,7 @@ function Login() {
             placeholder="Введите email"
             value={values["email"]}
             onChange={handleChange}
+            pattern
           />
           {errors["email"] && (
             <span className="login__error">{errors["email"]}</span>

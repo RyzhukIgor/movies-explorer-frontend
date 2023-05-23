@@ -65,6 +65,7 @@ function Register() {
             onChange={handleChange}
             required
             placeholder="Введите email"
+            pattern
           />
           {errors["email"] && (
             <span className="form__error">{errors["email"]}</span>
