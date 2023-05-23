@@ -9,6 +9,8 @@ function Profile() {
     useFormWithValidation();
   const { user, logout, setUser } = useUserStore();
   const [isUpdatedData, setIsUpdatedData] = useState(false);
+  const [isShowSuccessMessage, setShowSuccessMessage] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,10 @@ function Profile() {
         email: values.email || user.email,
       });
       setUser(updatedData);
+      setShowSuccessMessage(true);
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      },1000)
     } catch (err) {
       console.log(err);
     }
@@ -33,6 +39,8 @@ function Profile() {
   useEffect(() => {
     resetForm({ name: user.name, email: user.email }, {}, false);
   }, [user, resetForm]);
+
+
 
   return (
     <section className="profile">
@@ -66,6 +74,7 @@ function Profile() {
               error={errors.email}
             />
           </label>
+          <p className={`profile__message ${isShowSuccessMessage ? "profile__message_hidden" : "null"}`}>Данные успешно обновлены!</p>
           <nav className="profile__nav">
             <button
               className="profile__button"
