@@ -4,7 +4,6 @@ import Logo from '../Logo/Logo';
 import { useFormWithValidation } from '../../hooks/useForm';
 import { useUserStore } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
-import { regexEmail, regexName } from '../../utils/constants';
 
 function Register() {
   const { values, handleChange, errors, isValid } = useFormWithValidation({
@@ -31,7 +30,7 @@ function Register() {
   };
 
   if (user) {
-    return <Navigate path="/" />
+    return <Navigate to="/" />;
   }
 
   return (
@@ -54,7 +53,6 @@ function Register() {
             onChange={handleChange}
             required
             placeholder="Введите имя"
-            pattern={regexName}
             minLength="2"
             maxLength="30"
           />
@@ -73,7 +71,7 @@ function Register() {
             onChange={handleChange}
             required
             placeholder="Введите email"
-            pattern={regexEmail}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
           {errors['email'] && (
             <span className="form__error">{errors['email']}</span>

@@ -41,12 +41,13 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     navigate("/");
-    localStorage.remove("queryValue");
-    localStorage.remove("shortsToggleSwitch");
+    localStorage.removeItem("queryValue");
+    localStorage.removeItem("shortsToggleSwitch");
   };
 
   if (!appInited) {
     return null;
+
   }
 
   return (

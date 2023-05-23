@@ -4,7 +4,6 @@ import Logo from '../Logo/Logo';
 import { useFormWithValidation } from '../../hooks/useForm';
 import { checkAuth, login } from '../../utils/auth';
 import { useUserStore } from '../../contexts/CurrentUserContext';
-import { regexEmail } from '../../utils/constants';
 
 function Login() {
   const { values, handleChange, errors, isValid } = useFormWithValidation({
@@ -33,7 +32,7 @@ function Login() {
   );
 
   if (user) {
-    return <Navigate path="/" />
+    return <Navigate path="/" />;
   }
 
   return (
@@ -56,7 +55,7 @@ function Login() {
             placeholder="Введите email"
             value={values['email']}
             onChange={handleChange}
-            pattern={regexEmail}
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
           {errors['email'] && (
             <span className="login__error">{errors['email']}</span>
