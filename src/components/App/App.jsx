@@ -41,6 +41,8 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     navigate("/signup");
+    localStorage.remove("queryValue");
+    localStorage.remove("shortsToggleSwitch");
   };
 
   if (!appInited) {
