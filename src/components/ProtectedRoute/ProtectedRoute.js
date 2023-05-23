@@ -1,6 +1,6 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
-import { useUserStore } from "../../contexts/CurrentUserContext";
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { useUserStore } from '../../contexts/CurrentUserContext';
 
 const ProtectedRoute = (props) => {
   const { user } = useUserStore();

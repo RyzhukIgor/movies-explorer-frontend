@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import MoreButton from "../MoreButton/MoreButton";
-import { moviesApi } from "../../utils/MoviesApi";
-import { Preloader } from "../Preloader/Preloader";
-import mainApi from "../../utils/MainApi";
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import MoreButton from '../MoreButton/MoreButton';
+import { moviesApi } from '../../utils/MoviesApi';
+import { Preloader } from '../Preloader/Preloader';
+import mainApi from '../../utils/MainApi';
 
 function Movies() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(false);
   const [queryValue, setQueryValue] = useState(
-    localStorage.getItem("queryValue") || ""
+    localStorage.getItem('queryValue') || ''
   );
   const [filterValue, setFilterValue] = useState(queryValue);
   const [allFilms, setAllFilms] = useState([]);
   const [savedFilms, setSavedFilms] = useState([]);
   const [shortsToggleSwitch, setShortsToggleSwitch] = useState(
-    JSON.parse(localStorage.getItem("shortsToggleSwitch")) || false
+    JSON.parse(localStorage.getItem('shortsToggleSwitch')) || false
   );
   const [resultError, setResultError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [filmsCount, setFilmsCount] = useState(() => {
     return screenWidth >= 1088 ? 12 : screenWidth >= 684 ? 8 : 5;
   });
@@ -38,10 +38,10 @@ function Movies() {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -61,7 +61,7 @@ function Movies() {
       console.log(`Ошибка: ${error}.`);
       setResultError(true);
       setErrorMessage(
-        "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+        'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.'
       );
     } finally {
       setIsLoading(false);
@@ -80,11 +80,11 @@ function Movies() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("shortsToggleSwitch", shortsToggleSwitch.toString());
+    localStorage.setItem('shortsToggleSwitch', shortsToggleSwitch.toString());
   }, [shortsToggleSwitch]);
 
   useEffect(() => {
-    localStorage.setItem("queryValue", queryValue);
+    localStorage.setItem('queryValue', queryValue);
   }, [queryValue]);
 
   function handleShortsToggleSwitchState() {

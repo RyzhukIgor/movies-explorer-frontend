@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useUserStore } from "../../contexts/CurrentUserContext";
-import { useFormWithValidation } from "../../hooks/useForm";
-import { Link } from "react-router-dom";
-import mainApi from "../../utils/MainApi";
+import React, { useState, useEffect } from 'react';
+import { useUserStore } from '../../contexts/CurrentUserContext';
+import { useFormWithValidation } from '../../hooks/useForm';
+import { Link } from 'react-router-dom';
+import mainApi from '../../utils/MainApi';
 
 function Profile() {
   const { values, handleChange, errors, isValid, resetForm } =
@@ -10,7 +10,6 @@ function Profile() {
   const { user, logout, setUser } = useUserStore();
   const [isUpdatedData, setIsUpdatedData] = useState(false);
   const [isShowSuccessMessage, setShowSuccessMessage] = useState(false);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ function Profile() {
       setShowSuccessMessage(true);
       setTimeout(() => {
         setShowSuccessMessage(false);
-      },1000)
+      }, 1000);
     } catch (err) {
       console.log(err);
     }
@@ -40,8 +39,6 @@ function Profile() {
     resetForm({ name: user.name, email: user.email }, {}, false);
   }, [user, resetForm]);
 
-
-
   return (
     <section className="profile">
       <div className="profile__container">
@@ -54,7 +51,7 @@ function Profile() {
               type="text"
               id="name"
               name="name"
-              value={values.name || ""}
+              value={values.name || ''}
               onChange={handleChange}
               error={errors.name}
               placeholder="Введите имя"
@@ -69,12 +66,18 @@ function Profile() {
               name="email"
               required
               placeholder="Введите email"
-              value={values.email || ""}
+              value={values.email || ''}
               onChange={handleChange}
               error={errors.email}
             />
           </label>
-          <p className={`profile__message ${isShowSuccessMessage ? "profile__message_hidden" : "null"}`}>Данные успешно обновлены!</p>
+          <p
+            className={`profile__message ${
+              isShowSuccessMessage ? 'profile__message_hidden' : 'null'
+            }`}
+          >
+            Данные успешно обновлены!
+          </p>
           <nav className="profile__nav">
             <button
               className="profile__button"

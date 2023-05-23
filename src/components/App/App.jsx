@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import Header from "../Header/Header";
-import Main from "../Main/Main";
-import Footer from "../Footer/Footer";
-import Movies from "../Movies/Movies";
-import SavedMovies from "../SavedMovies/SavedMovies";
-import Profile from "../Profile/Profile";
-import Register from "../Register/Register";
-import Login from "../Login/Login";
-import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import Header from '../Header/Header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
+import Movies from '../Movies/Movies';
+import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
-import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import { checkAuth } from "../../utils/auth";
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { checkAuth } from '../../utils/auth';
 
 function App() {
   const [appInited, setAppInited] = useState(false);
@@ -21,7 +21,7 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
+    const jwt = localStorage.getItem('jwt');
 
     if (jwt) {
       checkAuth(jwt)
@@ -38,16 +38,15 @@ function App() {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem('jwt');
     setCurrentUser(null);
-    navigate("/");
-    localStorage.removeItem("queryValue");
-    localStorage.removeItem("shortsToggleSwitch");
+    navigate('/');
+    localStorage.removeItem('queryValue');
+    localStorage.removeItem('shortsToggleSwitch');
   };
 
   if (!appInited) {
     return null;
-
   }
 
   return (
