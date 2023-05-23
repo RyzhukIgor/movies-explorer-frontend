@@ -83,6 +83,10 @@ function Movies() {
     localStorage.setItem("shortsToggleSwitch", shortsToggleSwitch.toString());
   }, [shortsToggleSwitch]);
 
+  useEffect(() => {
+    localStorage.setItem("queryValue", queryValue);
+  }, [queryValue]);
+
   function handleShortsToggleSwitchState() {
     setShortsToggleSwitch(!shortsToggleSwitch);
   }
