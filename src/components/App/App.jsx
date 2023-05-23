@@ -40,7 +40,7 @@ function App() {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
-    navigate("/signup");
+    navigate("/");
     localStorage.remove("queryValue");
     localStorage.remove("shortsToggleSwitch");
   };
