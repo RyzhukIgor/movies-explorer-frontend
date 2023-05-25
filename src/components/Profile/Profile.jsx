@@ -6,8 +6,9 @@ import mainApi from '../../utils/MainApi';
 
 function Profile() {
   const { user, logout, setUser } = useUserStore();
+  console.log(user);
   const { values, handleChange, errors, isValid, resetForm } =
-    useFormWithValidation();
+    useFormWithValidation({ name: user.name, email: user.email });
   const [isUpdatedData, setIsUpdatedData] = useState(false);
   const [isShowSuccessMessage, setShowSuccessMessage] = useState(false);
 

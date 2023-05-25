@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 import { useFormWithValidation } from '../../hooks/useForm';
 import { useUserStore } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
-import { login } from '../../utils/auth';
+import { login, checkAuth } from '../../utils/auth';
 
 function Register() {
   const { values, handleChange, errors, isValid } = useFormWithValidation({
@@ -21,13 +21,15 @@ function Register() {
 
     try {
       const { name, email, password } = values;
-      const userData = await mainApi.register({ name, email, password });
+      await mainApi.register({ name, email, password });
       const { token } = await login({ email, password });
       localStorage.setItem('jwt', token);
+      const userInfo = await checkAuth(token);
       setIsRegOk(true);
-      setUser(userData);
+      setUser(userInfo);
       navigate('/movies');
     } catch (err) {
+      console.log(err)
       setIsRegOk(false);
     }
   };
