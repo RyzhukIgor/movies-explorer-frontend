@@ -32,7 +32,7 @@ function Login() {
   );
 
   if (user) {
-    return <Navigate path="/" />;
+    return <Navigate to="/" />;
   }
 
   return (
