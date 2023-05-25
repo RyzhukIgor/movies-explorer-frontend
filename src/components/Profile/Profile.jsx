@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import mainApi from '../../utils/MainApi';
 
 function Profile() {
+  const { user, logout, setUser } = useUserStore();
   const { values, handleChange, errors, isValid, resetForm } =
     useFormWithValidation();
-  const { user, logout, setUser } = useUserStore();
   const [isUpdatedData, setIsUpdatedData] = useState(false);
   const [isShowSuccessMessage, setShowSuccessMessage] = useState(false);
 
