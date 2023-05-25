@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { NavLink, useNavigate, Navigate } from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import { useFormWithValidation } from '../../hooks/useForm';
@@ -12,20 +12,26 @@ function Login() {
   });
   const navigate = useNavigate();
   const { user, setUser } = useUserStore();
+  const [isDisabledInput, setIsDisabledInput] = useState(false);
 
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
+      setIsDisabledInput(true);
       const { email, password } = values;
 
       try {
         const { token } = await login({ email, password });
         localStorage.setItem('jwt', token);
         const userData = await checkAuth(token);
+        
         setUser(userData);
+        setIsDisabledInput(false);
         navigate('/movies');
+        
       } catch (err) {
         console.log(err);
+        setIsDisabledInput(false);
       }
     },
     [values, navigate, setUser]
@@ -47,6 +53,7 @@ function Login() {
             E-mail
           </label>
           <input
+            disabled={isDisabledInput}
             className="login__input"
             type="email"
             id="email"
@@ -64,6 +71,7 @@ function Login() {
             Пароль
           </label>
           <input
+            disabled={isDisabledInput}
             className="login__input"
             type="password"
             id="password"

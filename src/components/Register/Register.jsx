@@ -15,10 +15,11 @@ function Register() {
   const [isRegOk, setIsRegOk] = useState(true);
   const { user, setUser } = useUserStore();
   const navigate = useNavigate();
+  const [isDisabledInput, setIsDisabledInput] = useState(false);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-
+    setIsDisabledInput(true);
     try {
       const { name, email, password } = values;
       await mainApi.register({ name, email, password });
@@ -28,9 +29,11 @@ function Register() {
       setIsRegOk(true);
       setUser(userInfo);
       navigate('/movies');
+      setIsDisabledInput(false);
     } catch (err) {
       console.log(err)
       setIsRegOk(false);
+      setIsDisabledInput(false);
     }
   };
 
@@ -50,6 +53,7 @@ function Register() {
             Имя
           </label>
           <input
+            disabled = {isDisabledInput}
             className="form__input"
             type="text"
             id="username"
@@ -68,6 +72,7 @@ function Register() {
             E-mail
           </label>
           <input
+             disabled = {isDisabledInput}
             className="form__input"
             type="email"
             id="email"
@@ -85,6 +90,7 @@ function Register() {
             Пароль
           </label>
           <input
+            disabled = {isDisabledInput}
             className="form__input"
             type="password"
             id="password"
