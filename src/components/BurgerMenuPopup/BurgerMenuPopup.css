@@ -18,7 +18,7 @@
 .burger-popup__menu {
     display: flex;
     flex-direction: column;
-    max-height: 1024px;
+   
     box-sizing: border-box;
     position: absolute;
     top: 0;

@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+@media screen and (min-width: 1281px) {
+    .search  {
+        margin: 0 auto;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .search {
         margin: 0 30px;
@@ -25,6 +31,12 @@
     display: flex;
     justify-content: space-between;
     padding-top: 48px;
+}
+
+@media screen and (min-width: 1281px) {
+    .search__items {
+        margin: 0 auto ;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -118,6 +130,12 @@
     border-bottom: 1px solid rgba(170, 170, 170, 20%);
 }
 
+@media screen and (min-width: 1281px) {
+    .search__checkbox-container {
+        margin: 0 auto ;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .search__checkbox-container {
         max-width: 708px;
@@ -194,4 +212,11 @@
         font-size: 11px;
         line-height: 18px;
     }
+}
+
+.search__error{
+        position: absolute;
+        top: 130px;
+        left: 80px;
+        color: #f5f2f2;
 }

@@ -1,0 +1,13 @@
+
+.movies__message {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #606166;
+  }
+  
+  .movies__message-none {
+    display: block;
+  }

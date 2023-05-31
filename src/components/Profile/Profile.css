@@ -18,7 +18,7 @@
 @media screen and (max-width: 480px) {
   .profile__container {
     margin: 0 18px;
-   
+
   }
 }
 
@@ -33,21 +33,21 @@
   color: #FFFFFF;
   margin: 0 auto;
   padding: 54px 0px 123px;
-  
+
 }
 
 
 @media screen and (max-width: 768px) {
   .profile__greeting {
     padding: 233px 0px 95px;
-    
+
   }
 }
 
 @media screen and (max-width: 480px) {
   .profile__greeting {
     padding: 66px 0px 81px;
-    
+
   }
 }
 
@@ -65,25 +65,26 @@
 @media screen and (max-width: 480px) {
   .profile__label {
     max-width: 260px;
+    margin: 0 auto 17px;
   }
 }
 
 .profile__label:last-of-type {
-  padding-bottom: 220px;
-  margin: 0;
+  padding-bottom: 65px;
+  margin: 0 auto;
   border: none;
 }
 
 @media screen and (max-width: 768px) {
   .profile__label:last-of-type {
-    padding-bottom: 212px;
+    padding-bottom: 90px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .profile__label:last-of-type{
-    padding-bottom: 380px;
-    
+  .profile__label:last-of-type {
+    padding-bottom: 265px;
+
   }
 }
 
@@ -132,13 +133,28 @@
   cursor: pointer;
 }
 
+.profile__button:disabled {
+  background: none;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  font-weight: 400;
+  color: #555555;
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+
 @media screen and (max-width: 480px) {
   .profile__button {
     font-size: 12px;
     line-height: 15px;
   }
 }
-
 
 
 .profile__button_red {
@@ -148,4 +164,39 @@
 
 .profile__button:last-of-type {
   margin: 0 0 50px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__button:last-of-type{
+    margin-bottom: 10px;
+  }
+}
+
+
+.profile__nav {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.profile__form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.profile__message {
+  font-weight: 500;
+  color: #504d4d;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  padding-bottom: 100px;
+  visibility: hidden;
+
+}
+
+.profile__message_hidden {
+  visibility: visible;
 }

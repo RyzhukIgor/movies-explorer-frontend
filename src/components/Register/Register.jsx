@@ -1,56 +1,128 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Logo from "../Logo/Logo";
+import React, { useState } from 'react';
+import { NavLink, useNavigate, Navigate } from 'react-router-dom';
+import Logo from '../Logo/Logo';
+import { useFormWithValidation } from '../../hooks/useForm';
+import { useUserStore } from '../../contexts/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
+import { login, checkAuth } from '../../utils/auth';
 
 function Register() {
-    return (
-        <section className="form">
-        <div className="form__greeting">
-          <Logo />
-          <h2 className="form__title">Добро пожаловать!</h2>
-        </div>
-          <fieldset className="form__inputs">
-          <label className="form__label" htmlFor="username">Имя</label>
-          <input 
+  const { values, handleChange, errors, isValid } = useFormWithValidation({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [isRegOk, setIsRegOk] = useState(true);
+  const { user, setUser } = useUserStore();
+  const navigate = useNavigate();
+  const [isDisabledInput, setIsDisabledInput] = useState(false);
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    setIsDisabledInput(true);
+    try {
+      const { name, email, password } = values;
+      await mainApi.register({ name, email, password });
+      const { token } = await login({ email, password });
+      localStorage.setItem('jwt', token);
+      const userInfo = await checkAuth(token);
+      setIsRegOk(true);
+      setUser(userInfo);
+      navigate('/movies');
+      setIsDisabledInput(false);
+    } catch (err) {
+      console.log(err)
+      setIsRegOk(false);
+      setIsDisabledInput(false);
+    }
+  };
+
+  if (user) {
+    return <Navigate to="/" />;
+  }
+
+  return (
+    <section className="form">
+      <div className="form__greeting">
+        <Logo />
+        <h2 className="form__title">Добро пожаловать!</h2>
+      </div>
+      <form onSubmit={handleSubmit} noValidate>
+        <fieldset className="form__inputs">
+          <label className="form__label" htmlFor="name">
+            Имя
+          </label>
+          <input
+            disabled = {isDisabledInput}
             className="form__input"
-            type="text" 
-            id="username" 
-            name="username" 
-            defaultValue="Виталий"
-            minLength="2" 
-            maxLength="30" 
-            required 
-            placeholder="Введите имя" 
+            type="text"
+            id="username"
+            name="name"
+            value={values['name']}
+            onChange={handleChange}
+            required
+            placeholder="Введите имя"
+            minLength="2"
+            maxLength="30"
           />
-          <label className="form__label" htmlFor="email">E-mail</label>
-          <input 
-            className="form__input" 
-            type="email" 
-            id="email" 
-            name="email" 
-            defaultValue=""
-            required 
-            placeholder="Введите email" 
+          {errors['name'] && (
+            <span className="form__error">{errors['name']}</span>
+          )}
+          <label className="form__label" htmlFor="email">
+            E-mail
+          </label>
+          <input
+             disabled = {isDisabledInput}
+            className="form__input"
+            type="email"
+            id="email"
+            name="email"
+            value={values['email']}
+            onChange={handleChange}
+            required
+            placeholder="Введите email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
-          <label className="form__label" htmlFor="password">Пароль</label>
-          <input 
-            className="form__input" 
-            type="password" 
-            id="password" 
-            name="password" 
-            defaultValue="••••••••••••••"
-            required 
-            placeholder="Введите пароль"  
+          {errors['email'] && (
+            <span className="form__error">{errors['email']}</span>
+          )}
+          <label className="form__label" htmlFor="password">
+            Пароль
+          </label>
+          <input
+            disabled = {isDisabledInput}
+            className="form__input"
+            type="password"
+            id="password"
+            name="password"
+            required
+            value={values['password']}
+            onChange={handleChange}
+            placeholder="Введите пароль"
           />
-          <span className="form__input-error" >Что-то пошло не так... </span>
-          <button className="form__submit" type="submit">Зарегистрироваться</button>
-         </fieldset>
-        <p className="form__text">
-          Уже зарегистрированы?
-          <NavLink className="form__link" to="/signin">Войти</NavLink>
-        </p>
-      </section>
-    );
+          {errors['password'] && (
+            <span className="form__error">{errors['password']}</span>
+          )}
+          <span
+            className={`form__input-error ${
+              isRegOk ? 'form__error_invisible' : 'form__error_visible'
+            }`}
+          >
+            Что-то пошло не так...{' '}
+          </span>
+          <button className="form__submit" type="submit" disabled={!isValid}>
+            Зарегистрироваться
+          </button>
+        </fieldset>
+      </form>
+      <p className="form__text">
+        Уже зарегистрированы?
+        <NavLink className="form__link" to="/signin">
+          Войти
+        </NavLink>
+      </p>
+    </section>
+  );
 }
 
 export default Register;

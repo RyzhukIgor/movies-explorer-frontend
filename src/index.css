@@ -18,7 +18,6 @@
 @import url(./components/MoviesCard/MoviesCard.css);
 @import url(./components/SavedMovies/SavedMovies.css);
 @import url(./components/MoreButton/MoreButton.css);
-@import url(./components/SavedDevider/SavedDevider.css);
 @import url(./components/Logo/Logo.css);
 @import url(./components/Profile/Profile.css);
 @import url(./components/Preloader/Preloader.css);
@@ -27,3 +26,4 @@
 @import url(./components/NotFoundPage/NotFoundPage.css);
 @import url(./components/BurgerMenu/BurgerMenu.css);
 @import url(./components/BurgerMenuPopup/BurgerMenuPopup.css);
+@import url(./components/Movies/Movies.css);
