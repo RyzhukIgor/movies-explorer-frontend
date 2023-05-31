@@ -1,4 +1,4 @@
-<img src="https://github.com/RyzhukIgor/movies-explorer-frontend/blob/main/src/images/0531.gif" alt="гифка">   
+# <img src="https://github.com/RyzhukIgor/movies-explorer-frontend/blob/main/src/images/0531.gif" alt="гифка">   
 # Сделан финальный проект на веб-факультете в @yandex.practicum&#127942;  
 ## Это сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.   
 ### Вот что было сделано:&#128270;  
